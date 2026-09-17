@@ -194,6 +194,12 @@ code.code{background:#0f0f12;border:1px solid var(--border);border-radius:8px;pa
 /* small buttons (RSVP, back links, dashboard cards) */
 .btn.small{width:auto;padding:9px 18px;font-size:14px}
 
+/* Netlify injects a "Powered by Netlify" badge iframe (position:fixed,
+   bottom-right, max z-index) that covers the right-most bottom menu tab
+   on phones, making "Sign in" untappable. The Hub uses no iframes of its
+   own, so hiding this injected badge is safe and restores the menu. */
+iframe[src*="_api/badge"]{display:none!important}
+
 </style>
 <style>
   .bar{height:10px;background:#26262c;border-radius:999px;overflow:hidden;margin:8px 0 4px}
@@ -392,12 +398,13 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
  *      b) WITHOUT a code -> a join_requests row that waits for an
  *         organizer or Wayne to approve, then links the row to a group.
  *
- * Code scheme (also documented in README.md):
+ * Code scheme:
  *   member     -> joins with a GROUP invite code, e.g. PARAGON-GROUP-START
  *   organizer  -> PARAGON-O- + invite code minus the "PARAGON-" prefix
  *                 e.g. group invite PARAGON-G-AB12-CD34
  *                      organizer code PARAGON-O-G-AB12-CD34
- *   originator -> PARAGON-ORIGIN-anything (Wayne's code; he sets the secret)
+ *   originator -> (no code) Wayne is the Originator; the role is never
+ *                 granted by a code.
  *
  * Local copies kept in localStorage (never blocked by network):
  *   ppdx_member_v1       {id,name,role,group_id,email,phone,bio,avatar_url}
@@ -483,13 +490,14 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
   }
 
   /* ---------- code parsing ---------- */
-  // Returns {kind:'member'|'organizer'|'originator', invite:'PARAGON-...'} or null.
+  // Returns {kind:'member'|'organizer', invite:'PARAGON-...'} or null.
+  // There is no code that grants the Originator role: Wayne is the
+  // Originator, and the role is never assigned by a code.
   function parseCode(raw) {
     var code = cleanCode(raw);
     if (!code) return null;
-    if (code.indexOf("PARAGON-ORIGIN-") === 0 && code.length > "PARAGON-ORIGIN-".length) {
-      return { kind: "originator", invite: SEED_GROUP_INVITE };
-    }
+    // The old PARAGON-ORIGIN- code path is retired. Reject it outright.
+    if (code.indexOf("PARAGON-ORIGIN-") === 0) return null;
     if (code.indexOf("PARAGON-O-") === 0 && code.length > "PARAGON-O-".length) {
       // Organizer code = "PARAGON-O-" + invite code without its "PARAGON-" prefix.
       return { kind: "organizer", invite: "PARAGON-" + code.slice("PARAGON-O-".length) };
@@ -829,11 +837,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
         .then(function (res) {
           if (res.error) throw res.error;
           if (res.data) return res.data;
-          if (parsed.kind !== "originator") throw new Error("bad-code");
-          return client.from("groups")
-            .insert({ name: "Paragon PDX", invite_code: SEED_GROUP_INVITE })
-            .select("id,name,invite_code").single()
-            .then(function (r2) { if (r2.error) throw r2.error; return r2.data; });
+          throw new Error("bad-code");
         })
         .then(function (group) {
           // Link this member's row to the group (same row from site signup).
