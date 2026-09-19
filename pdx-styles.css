@@ -1,0 +1,222 @@
+/* Paragon PDX Hub — warm dark theme, phone-first */
+:root{
+  --bg:#0c0c0e;
+  --card:#17171b;
+  --card2:#1e1e24;
+  --text:#f4f1ea;
+  --muted:#a8a29b;
+  --accent:#e8641b;
+  --accent2:#f5a623;
+  --accent3:#ffd23f;
+  --border:#2b2b31;
+  --green:#4caf7d;
+  --red:#e05c5c;
+  --radius:14px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.55;
+  padding-bottom:92px; /* room for bottom nav */
+}
+a{color:var(--accent2)}
+img{max-width:100%}
+
+/* ---------- header ---------- */
+.topbar{
+  position:sticky;top:0;z-index:40;
+  display:flex;align-items:center;gap:10px;
+  background:rgba(12,12,14,.96);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--border);
+  padding:10px 14px;
+}
+.topbar img.logo{height:40px;width:auto;border-radius:8px;background:#000}
+.topbar .brand{font-weight:800;font-size:20px;letter-spacing:.02em}
+.topbar .brand small{display:block;font-size:11px;color:var(--muted);font-weight:400;letter-spacing:.04em}
+.role-badge{
+  margin-left:auto;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  padding:6px 10px;border-radius:999px;white-space:nowrap;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));color:#14100a;
+}
+
+/* ---------- layout ---------- */
+#view{max-width:640px;margin:0 auto;padding:16px 14px 24px}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px;margin:0 0 14px;
+}
+.card h2,.card h3{margin:.2em 0 .5em}
+.muted{color:var(--muted)}
+.center{text-align:center}
+.hero-logo{width:100%;border-radius:var(--radius);background:#000;display:block}
+.tagline{
+  font-size:18px;font-weight:600;color:var(--accent3);margin:12px 0 4px;
+}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:block;width:100%;text-align:center;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  color:#171006;font-weight:800;font-size:18px;
+  border:0;border-radius:var(--radius);padding:15px 16px;margin:10px 0;
+  cursor:pointer;text-decoration:none;min-height:56px;
+}
+.btn:active{transform:scale(.98)}
+.btn.secondary{
+  background:var(--card2);color:var(--text);border:1px solid var(--border);font-size:16px;font-weight:600;
+}
+.btn.small{font-size:15px;padding:11px 12px;min-height:48px}
+.btn:disabled{opacity:.45;cursor:default}
+.btn-row{display:flex;gap:10px}
+.btn-row .btn{margin:6px 0}
+
+/* ---------- bottom nav ---------- */
+.bottomnav{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  display:flex;background:#111114;border-top:1px solid var(--border);
+  padding:6px 2px calc(8px + env(safe-area-inset-bottom));
+}
+.bottomnav a{
+  flex:1;text-align:center;text-decoration:none;color:var(--muted);
+  font-size:11px;font-weight:600;padding:8px 2px;border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;gap:3px;min-height:56px;justify-content:center;
+}
+.bottomnav a .ico{font-size:22px;line-height:1}
+.bottomnav a.active{color:var(--accent3)}
+.bottomnav a.active .ico{filter:drop-shadow(0 0 6px rgba(245,166,35,.6))}
+
+/* ---------- gate ---------- */
+.gate-wrap{max-width:420px;margin:6vh auto 0;padding:0 16px}
+.gate-card{
+  background:var(--card);border:1px solid var(--border);border-radius:18px;padding:26px 20px;text-align:center;
+}
+.gate-card img{width:100%;border-radius:12px;background:#000}
+.field{margin:12px 0;text-align:left}
+.field label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px;font-weight:600}
+.field input{
+  width:100%;font-size:17px;padding:13px 12px;border-radius:10px;
+  border:1px solid var(--border);background:#0f0f12;color:var(--text);
+}
+.field input:focus{outline:2px solid var(--accent);border-color:var(--accent)}
+.error{color:var(--red);font-size:14px;min-height:20px;margin:6px 0}
+
+/* ---------- lists ---------- */
+.list-item{
+  display:flex;align-items:center;gap:12px;
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:14px;margin:0 0 10px;text-decoration:none;color:var(--text);
+}
+.list-item .grow{flex:1}
+.list-item .title{font-weight:700}
+.list-item .sub{font-size:13px;color:var(--muted)}
+.list-item .chev{color:var(--muted);font-size:20px}
+.list-item.locked{opacity:.55}
+.pill{
+  font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;white-space:nowrap;
+  background:var(--card2);border:1px solid var(--border);color:var(--muted);
+}
+.pill.done{background:rgba(76,175,125,.15);border-color:var(--green);color:var(--green)}
+.pill.next{background:rgba(245,166,35,.15);border-color:var(--accent2);color:var(--accent2)}
+.pill.lock{color:var(--muted)}
+
+/* ---------- quiz ---------- */
+.q-block{margin:0 0 18px}
+.q-text{font-weight:700;margin:0 0 10px}
+.choice{
+  display:block;width:100%;text-align:left;
+  background:var(--card2);border:1px solid var(--border);color:var(--text);
+  border-radius:12px;padding:13px 14px;margin:0 0 8px;font-size:16px;cursor:pointer;
+}
+.choice .letter{
+  display:inline-block;font-weight:800;color:var(--accent2);
+  border:1px solid var(--border);border-radius:8px;width:30px;height:30px;line-height:28px;text-align:center;margin-right:10px;
+}
+.choice.selected{border-color:var(--accent2);background:#2a2117}
+.q-tap{cursor:pointer}
+.choice.correct{border-color:var(--green);background:rgba(76,175,125,.12)}
+.choice.wrong{border-color:var(--red);background:rgba(224,92,92,.10)}
+.choice:disabled{cursor:default;opacity:1}
+textarea.essay{
+  width:100%;min-height:160px;font-size:16px;line-height:1.6;
+  background:#0f0f12;color:var(--text);border:1px solid var(--border);border-radius:12px;padding:12px;
+  font-family:inherit;resize:vertical;
+}
+.result-card{
+  border:2px solid var(--accent2);border-radius:var(--radius);padding:18px;margin:14px 0;background:#1c1712;
+}
+.result-card .score{font-size:34px;font-weight:800;color:var(--accent3)}
+.pass{color:var(--green);font-weight:800}
+.fail{color:var(--red);font-weight:800}
+details.week{border:1px solid var(--border);border-radius:12px;margin:0 0 8px;background:var(--card)}
+details.week summary{padding:13px 14px;font-weight:700;cursor:pointer;list-style:none}
+details.week summary::-webkit-details-marker{display:none}
+details.week .days{padding:0 14px 12px}
+
+/* ---------- misc ---------- */
+.toast{
+  position:fixed;left:50%;bottom:100px;transform:translateX(-50%);
+  background:#222;color:#fff;padding:12px 18px;border-radius:999px;font-size:15px;
+  opacity:0;transition:opacity .25s;z-index:99;pointer-events:none;max-width:90%;
+}
+.toast.show{opacity:1}
+.empty{
+  text-align:center;color:var(--muted);padding:34px 18px;border:1px dashed var(--border);border-radius:var(--radius);
+}
+.res-card h3{margin:.1em 0 .3em}
+.res-card p{margin:.3em 0 .7em;color:var(--muted)}
+.res-meta{display:flex;flex-wrap:wrap;gap:8px}
+.res-meta a{
+  font-size:14px;font-weight:600;text-decoration:none;color:var(--accent3);
+  border:1px solid var(--border);border-radius:999px;padding:8px 14px;background:var(--card2);
+}
+.progress-bar{height:10px;background:#26262c;border-radius:999px;overflow:hidden;margin:8px 0}
+.progress-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent3))}
+.kv{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:15px}
+.kv:last-child{border-bottom:0}
+.kv b{color:var(--accent3)}
+h1.page-title{font-size:26px;margin:.4em 0}
+h2.section-title{font-size:20px;margin:1.2em 0 .4em;color:var(--accent3)}
+.steps{padding-left:20px}
+.steps li{margin:10px 0}
+code.code{background:#0f0f12;border:1px solid var(--border);border-radius:8px;padding:2px 8px;font-size:15px}
+
+/* small buttons (RSVP, back links, dashboard cards) */
+.btn.small{width:auto;padding:9px 18px;font-size:14px}
+
+/* Netlify injects a "Powered by Netlify" badge iframe (position:fixed,
+   bottom-right, max z-index) that covers the right-most bottom menu tab
+   on phones, making "Sign in" untappable. The Hub uses no iframes of its
+   own, so hiding this injected badge is safe and restores the menu. */
+iframe#nl-badge-frame,iframe[src*="_api/badge"]{display:none!important}
+
+/* written-guide article styles, scoped */
+.docview {font-family:Georgia,'Times New Roman',serif;max-width:720px;margin:0 auto;
+padding:24px;line-height:1.7;color:#1a1a1a;background:#fff}
+.docview .dayart {width:100%;height:auto;border-radius:6px}
+.docview h1 {font-size:1.6em;margin:.6em 0}
+.docview .weektag {color:#777;text-transform:uppercase;letter-spacing:.15em;font-size:.8em}
+.docview blockquote {border-left:3px solid #c9a86a;margin:1.2em 0;padding:.4em 1em;
+background:#faf7f0;font-style:italic}
+.docview .scripture {margin:1.2em 0}
+.docview .scripture .ref {font-weight:bold}
+.docview .prayer {background:#f4f7f4;border-radius:6px;padding:1em 1.2em;margin:1.2em 0}
+.docview .questions {margin:1.5em 0}
+.docview .q {font-weight:bold;margin:1em 0 .3em}
+.docview .choices {list-style:none;padding:0;margin:0 0 1em}
+.docview .choices li {margin:.25em 0 .25em 1.2em}
+.docview .essay {margin:1.5em 0}
+.docview .essay textarea {width:100%;min-height:220px;font-family:inherit;font-size:1em;
+line-height:2em;padding:.6em;border:1px solid #999;border-radius:4px;
+background:repeating-linear-gradient(#fff,#fff 1.98em,#cdd 1.98em,#cdd 2em)}
+.docview .nav {display:flex;justify-content:space-between;margin:2em 0;font-size:.95em}
+.docview .nav a {color:#1a5fb4;text-decoration:none}
+.docview .indexweek {margin:1.5em 0}
+.docview .indexweek h2 {font-size:1.2em;border-bottom:1px solid #ddd;padding-bottom:.2em}
+.docview .indexweek ul {list-style:none;padding:0}
+.docview .indexweek li {margin:.3em 0}
+.docview .indexweek a {color:#1a5fb4;text-decoration:none}
+.docview .weekintro {font-size:1.02em;line-height:1.7;color:#333;margin:.6em 0 1em}
+.docview .weeksummary {font-size:.98em;line-height:1.7;color:#444;background:#faf7f0;
+border-left:3px solid #c9a86a;padding:.6em 1em;margin:1.2em 0}
