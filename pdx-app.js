@@ -743,7 +743,7 @@ function vLearn(){
     "Your progress saves on this phone.</p>" +
     '<div class="btn-row"><a class="btn secondary small" href="#/learn/progress">My progress</a>' +
     (p && (p.role === "organizer" || p.role === "originator")
-      ? '<a class="btn secondary small" href="paragonpdx-dashboard.html">Organizer dashboard</a>'
+      ? '<a class="btn secondary small" href="paragonpdx-dashboard">Organizer dashboard</a>'
       : "") +
     "</div></div>" +
     '<div class="card"><h3>Read the written guide</h3>' +
