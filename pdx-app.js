@@ -128,7 +128,10 @@ function updateBadge(){
 
 /* ---------------- community news (hand-picked bulletin) ---------------- */
 var COMMUNITY_NEWS = [
-  { name: "Blanchet House",
+    { name: "CityTeam Portland",
+    line: "Overnight shelter for men, hot meals, groceries, and recovery programs on SE Grand Ave.",
+    url: "https://www.cityteam.org/portland/" },
+{ name: "Blanchet House",
     line: "Free hot meals six days a week in Old Town, plus clothing and shelter programs for men working toward recovery.",
     url: "https://blanchethouse.org/" },
   { name: "Sisters of the Road",
@@ -137,9 +140,6 @@ var COMMUNITY_NEWS = [
   { name: "Portland Rescue Mission",
     line: "Shelter, daily meals, and recovery programs for men, women, and children at Burnside.",
     url: "https://www.portlandrescuemission.org/" },
-  { name: "CityTeam Portland",
-    line: "Overnight shelter for men, hot meals, groceries, and recovery programs on SE Grand Ave.",
-    url: "https://www.cityteam.org/portland/" },
   { name: "Union Gospel Mission",
     line: "Serving people on Portland's streets since 1927 with meals, shelter, and recovery help.",
     url: "https://www.ugmportland.org/" },
