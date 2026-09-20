@@ -1,5 +1,5 @@
 /* Paragon PDX Hub — simple offline cache (same-origin GET only) */
-var CACHE = "ppdx-v3";
+var CACHE = "ppdx-v4";
 var CORE = [
   "./",
   "./index.html",
@@ -14,7 +14,7 @@ var CORE = [
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png",
-  "./paragonpdx-dashboard.html"
+  "./paragonpdx-dashboard"
 ];
 
 self.addEventListener("install", function (e) {
