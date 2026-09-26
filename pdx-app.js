@@ -1095,6 +1095,7 @@ function vMore(){
   var html = "<h1 class=\"page-title\">More</h1>" +
     '<a class="list-item" href="#/profile"><div class="grow"><div class="title">My Profile</div><div class="sub">Your name, bio &amp; photo</div></div><span class="chev">›</span></a>' +
     '<a class="list-item" href="#/resources"><div class="grow"><div class="title">Resources</div><div class="sub">Shelters, outreach &amp; tiny-home villages</div></div><span class="chev">›</span></a>' +
+        '<a class="list-item" href="studies/"><div class="grow"><div class="title">📚 Studies</div><div class="sub">Servant Leadership, Mindset & Well-being, Vocation PDX</div></div><span class="chev">›</span></a>' +
     '<a class="list-item" href="#/events"><div class="grow"><div class="title">Events</div><div class="sub">What\u2019s coming up</div></div><span class="chev">›</span></a>' +
     '<a class="list-item" href="#/news"><div class="grow"><div class="title">News</div><div class="sub">Updates from Wayne &amp; organizers</div></div><span class="chev">›</span></a>' +
     '<a class="list-item" href="#/discuss"><div class="grow"><div class="title">Discussion</div><div class="sub">Talk with the community</div></div><span class="chev">›</span></a>' +
