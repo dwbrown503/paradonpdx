@@ -230,9 +230,14 @@
     });
 
     dbReady().then(function (ok) {
-      if (!ok || !currentGroupId) {
+      if (!ok) {
         var empty = document.getElementById("msg-empty");
         if (empty) empty.innerHTML = '<p class="muted">Connect to the internet to see messages.</p>';
+        return;
+      }
+      if (!currentGroupId) {
+        var empty2 = document.getElementById("msg-empty");
+        if (empty2) empty2.innerHTML = '<p class="muted">You need to be in a group to see messages.</p>';
         return;
       }
       pollNow();

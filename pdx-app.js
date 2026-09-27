@@ -209,6 +209,7 @@ function renderNav(){
     ["#/home", "home", "🏠", "Home"],
     ["#/learn", "learn", "📖", "Learn"],
     ["#/meet", "meet", "🎥", "Meet"],
+    ["#/messages", "messages", "💬", "Messages"],
     ["#/more", "more", "⋯", "More"]
   ] : [
     ["#/", "home", "🏠", "Home"],
@@ -222,7 +223,7 @@ function renderNav(){
 
 function setActiveTab(tab){
   var map = { "": "home", home: "home", join: "join", signin: "signin",
-              learn: "learn", meet: "meet", more: "more", profile: "more",
+              learn: "learn", meet: "meet", messages: "messages", more: "more", profile: "more",
               resources: "more", events: "more", news: "more", directory: "more",
               discuss: "more", volunteer: "more", gallery: "more",
               about: "more", install: "more", contact: "home", guide: "learn", answers: "learn", references: "learn", "lesson-doc": "learn" };
