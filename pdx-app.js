@@ -1045,7 +1045,7 @@ function vProgress(){
 }
 
 /* ---------------- meet ---------------- */
-var JITSI_ROOM = "https://meet.jit.si/ParagonPDX";
+ var JITSI_ROOM = "https://fairmeeting.net/ParagonPDX";
 function vMeet(){
   view.innerHTML = "<h1 class=\"page-title\">Meeting Room</h1>" +
     '<div class="card center">' +
