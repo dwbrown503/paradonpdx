@@ -39,7 +39,8 @@ iframe#nl-badge-frame,iframe[src*="_api/badge"]{display:none!important}
 <script src="pdx-docs.js"></script>
 <script src="pdx-app.js"></script>
 <script src="pdx-app-studies-integration.js"></script>
-<script>
+<script src="pdx-app-messages.js">
+
 if (location.protocol.indexOf("http") === 0 && "serviceWorker" in navigator) {
   window.addEventListener("load", function () {
     navigator.serviceWorker.register("sw.js").catch(function () {});
