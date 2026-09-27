@@ -232,18 +232,18 @@
       var q = xclient.from("profiles")
         .select("id,name,role,group_id,created_at")
         .eq("status", "active").order("created_at");
-      if (groupIds && groupIds.length) q = q.in_("group_id", groupIds);
+      if (groupIds && groupIds.length) q = q.in("group_id", groupIds);
       return q.then(function (rp) {
         if (rp.error) throw rp.error;
         var members = rp.data || [];
         if (!members.length) return [];
         var ids = members.map(function (m) { return m.id; });
         return xclient.from("vocation_progress")
-          .select("profile_id,day").in_("profile_id", ids)
+          .select("profile_id,day").in("profile_id", ids)
           .then(function (rv) {
             if (rv.error) throw rv.error;
             return xclient.from("mindset_progress")
-              .select("profile_id,page").in_("profile_id", ids)
+              .select("profile_id,page").in("profile_id", ids)
               .then(function (rm) {
                 if (rm.error) throw rm.error;
                 var vocById = {}, minById = {};

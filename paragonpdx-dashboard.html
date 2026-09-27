@@ -1442,6 +1442,7 @@ Resources:`;for(let t of c){if(!t||typeof t!=`string`)throw Error(`@supabase/aut
 })();
 
 </script>
+<script src="pdx-db-vocation-mindset.js"></script>
 <!-- EmailJS: lets the dashboard email a new member their group code on
      approval. Plain HTTPS POST, works from file://. If Wayne hasn't
      filled in the three EmailJS values in db.js yet, sending is skipped
@@ -1766,11 +1767,20 @@ var emailjs=function(e){"use strict";class t{constructor(){let e=arguments.lengt
         list.innerHTML = '<p class="muted">No members yet. Share your group invite code and they will show up here.</p>';
         return;
       }
-      list.innerHTML = members.map(function (m) {
+      var studyP = window.ParagonDB.getAllMembersStudyProgress
+        ? window.ParagonDB.getAllMembersStudyProgress([currentGroupId])
+        : Promise.resolve([]);
+      return studyP.then(function (studyRows) {
+        var studyById = {};
+        (studyRows || []).forEach(function (r) { studyById[r.id] = r; });
+        list.innerHTML = members.map(function (m) {
         var pct = Math.round(m.daysDone / 130 * 100);
         var scoreTxt = m.avgScore == null ? "no scores yet" : "avg score " + m.avgScore + " / 5";
         var canPromote = (m.role === "member" && m.complete) &&
           (me.role === "originator" || me.group_id === currentGroupId);
+        var st = studyById[m.id] || {};
+        var vocDone = st.vocationDone || 0;
+        var minDone = st.mindsetDone || 0;
         return '<div class="card member-row" style="margin:0 0 10px">' +
           '<div class="member-top"><b>' + esc(m.name) + "</b>" +
           '<span class="pill role">' + esc(roleLabel(m.role)) + "</span>" +
@@ -1778,6 +1788,10 @@ var emailjs=function(e){"use strict";class t{constructor(){let e=arguments.lengt
           "</div>" +
           '<div class="bar"><i style="width:' + pct + '%"></i></div>' +
           '<div class="member-meta">' + m.daysDone + " of 130 days &middot; " + esc(scoreTxt) + "</div>" +
+          '<div class="member-meta">Vocation PDX: ' + vocDone + " of 30 days" +
+          (vocDone >= 30 ? ' <span class="pill done">Done</span>' : "") + "</div>" +
+          '<div class="member-meta">Mindset &amp; Well-being: ' + minDone + " of 65 pages" +
+          (minDone >= 65 ? ' <span class="pill done">Done</span>' : "") + "</div>" +
           (canPromote
             ? '<div class="rowbtns"><button class="btn small" data-promote="' + esc(m.id) +
               '" data-name="' + esc(m.name) + '">Make organizer</button></div>'
@@ -1789,6 +1803,7 @@ var emailjs=function(e){"use strict";class t{constructor(){let e=arguments.lengt
       for (var i = 0; i < btns.length; i++) {
         btns[i].addEventListener("click", onPromote);
       }
+      });
     }).catch(function () {
       list.innerHTML = '<p class="muted">Could not load members. Check your connection and reload.</p>';
     });

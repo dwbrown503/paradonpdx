@@ -106,26 +106,27 @@
 
   var vocationDays = null;   /* loaded from vocation-days.json */
   var vocationLoading = false;
+  var vocationWaiters = [];  /* callbacks waiting on the in-flight fetch */
 
   function loadVocationDays(cb) {
     if (vocationDays) { cb(vocationDays); return; }
     if (typeof VOCATION_DAYS !== "undefined" && VOCATION_DAYS) {
       vocationDays = VOCATION_DAYS; cb(vocationDays); return;
     }
-    if (vocationLoading) {
-      var t = setInterval(function () {
-        if (vocationDays) { clearInterval(t); cb(vocationDays); }
-      }, 200);
-      return;
-    }
+    vocationWaiters.push(cb);
+    if (vocationLoading) return;
     vocationLoading = true;
     fetch(VOCATION_JSON).then(function (r) {
       if (!r.ok) throw new Error("vocation-json-missing");
       return r.json();
     }).then(function (d) {
-      vocationDays = d; vocationLoading = false; cb(d);
+      vocationDays = d; vocationLoading = false;
+      var ws = vocationWaiters; vocationWaiters = [];
+      ws.forEach(function (w) { w(d); });
     }).catch(function () {
-      vocationLoading = false; cb(null);
+      vocationLoading = false;
+      var ws = vocationWaiters; vocationWaiters = [];
+      ws.forEach(function (w) { w(null); });
     });
   }
   function vocationDay(n) {
