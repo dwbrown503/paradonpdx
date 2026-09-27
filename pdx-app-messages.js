@@ -112,11 +112,17 @@
     q.then(function (res) {
       if (res.error) return;
       var rows = res.data || [];
-      if (!rows.length) return;
-      var p = getProfile();
-      var myId = p ? p.id : null;
       var list = document.getElementById("msg-list");
       if (!list) return;
+      if (!rows.length) {
+        /* First load with no messages: show empty state instead of stuck "Loading..." */
+        if (lastSeenId === 0) {
+          list.innerHTML = '<div class="card"><p class="muted">No messages yet. Say hello to your group!</p></div>';
+        }
+        return;
+      }
+      var p = getProfile();
+      var myId = p ? p.id : null;
       /* First load: replace. Later polls: append. */
       if (lastSeenId === 0) {
         list.innerHTML = rows.map(function (m) { return msgHtml(m, myId); }).join("");

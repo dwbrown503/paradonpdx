@@ -648,7 +648,7 @@
       var q = client.from("join_requests")
         .select("id,profile_id,name,email,phone,bio,avatar_url,group_id,status,reviewed_by,created_at")
         .order("created_at", { ascending: false });
-      if (groupIds && groupIds.length) q = q.in_("group_id", groupIds);
+      if (groupIds && groupIds.length) q = q.in("group_id", groupIds);
       return q.then(function (res) { if (res.error) throw res.error; return res.data; });
     },
 
@@ -705,7 +705,7 @@
           var members = rp.data || [];
           if (!members.length) return [];
           var ids = members.map(function (m) { return m.id; });
-          return client.from("progress").select("profile_id,day,score").in_("profile_id", ids)
+          return client.from("progress").select("profile_id,day,score").in("profile_id", ids)
             .then(function (rg) {
               if (rg.error) throw rg.error;
               var byId = {};

@@ -444,6 +444,8 @@
   if (origRoute) {
     try { window.removeEventListener("hashchange", PP.route); } catch (e) {}
     window.addEventListener("hashchange", studyRoute);
+    /* Let later files (messages) see the study router as the current one. */
+    try { window.__ppdx.route = studyRoute; } catch (e) {}
     /* Page loaded directly on a new study hash before this file ran. */
     var hh = location.hash || "";
     if (hh.indexOf("#/learn/vocation") === 0 || hh.indexOf("#/learn/mindset") === 0) {

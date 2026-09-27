@@ -1,5 +1,5 @@
 /* Paragon PDX Hub — simple offline cache (same-origin GET only) */
-var CACHE = "ppdx-v7";
+var CACHE = "ppdx-v8";
 var CORE = [
   "./",
   "./index.html",
@@ -9,6 +9,7 @@ var CORE = [
   "./pdx-docs.js",
     "./pdx-db-vocation-mindset.js",
   "./pdx-app-studies-integration.js",
+  "./pdx-app-messages.js",
   "./studies/vocation-days.json",
   "./questions.js",
   "./weeks.js",
