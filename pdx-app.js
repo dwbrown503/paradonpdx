@@ -69,21 +69,11 @@ function highestDone(){
   return h;
 }
 /* A lesson is open when it is the next one in line, or any earlier (missed) one.
-   The next lesson also waits until 3:45 AM on the next weekday (Monday-Friday)
-   after the previous one was finished, so the study moves one weekday at a time.
-   A Friday finish opens the next lesson Monday at 3:45 AM; nothing new opens
-   on Saturday or Sunday. */
+   No time gate: the next lesson opens the moment the previous one is finished. */
 function isOpen(day){
   var hd = highestDone();
   if (day <= hd) return true;
-  if (day !== hd + 1) return false;
-  var prev = getProgress().done[day - 1];
-  if (!prev || !prev.at) return true; /* Day 1, or a record saved before timestamps existed. */
-  var u = new Date(prev.at);
-  u.setDate(u.getDate() + 1);
-  u.setHours(3, 45, 0, 0);
-  while (u.getDay() === 0 || u.getDay() === 6) u.setDate(u.getDate() + 1);
-  return new Date() >= u;
+  return day === hd + 1;
 }
 
 /* ---------------- tiny helpers ---------------- */
@@ -777,7 +767,6 @@ function vLearnWeek(w){
     var open = isOpen(d);
     var res = getProgress().done[d];
     var sub = e.weekday + (res ? " · scored " + res.score + "/5" + (res.essay === false ? " · essay: fail" : res.essay === true ? " · essay: pass" : "") : "");
-    if (!open && d === highestDone() + 1) sub = "Opens at 3:45 AM";
     html += (open ? '<a class="list-item" href="#/learn/day/' + d + '">' : '<div class="list-item locked">') +
       '<div class="grow"><div class="title">Day ' + d + " — " + esc(e.title) + "</div>" +
       '<div class="sub">' + esc(sub) + "</div></div>" +
