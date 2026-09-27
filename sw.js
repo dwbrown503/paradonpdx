@@ -1,5 +1,5 @@
 /* Paragon PDX Hub — simple offline cache (same-origin GET only) */
-var CACHE = "ppdx-v6";
+var CACHE = "ppdx-v7";
 var CORE = [
   "./",
   "./index.html",
