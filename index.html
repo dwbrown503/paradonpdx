@@ -54,17 +54,6 @@ background-color:#27ae60;color:#fff;box-shadow:0 4px 6px rgba(39,174,96,0.2);}
 
 <div class="toast" id="toast"></div>
 
-<script src="data/questions.js"></script>
-<script src="data/weeks.js"></script>
-<script src="db.js"></script>
-<script src="app.js"></script>
-<script>
-if (location.protocol.indexOf("http") === 0 && "serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("sw.js").catch(function () {});
-  });
-}
-</script>
 <div id="terms-gate">
   <div class="modal-container">
     <header class="modal-header">
@@ -123,5 +112,16 @@ if (location.protocol.indexOf("http") === 0 && "serviceWorker" in navigator) {
 <p class="legal-text"><strong>Legal Terms:</strong> By tapping "I Accept," you acknowledge that you have read, understood, and expressly agree to be legally bound by these Terms. This digital action constitutes your binding electronic signature under the Oregon Uniform Electronic Transactions Act (ORS Chapter 84).</p>
 </section>
 </template>
+<script src="data/questions.js"></script>
+<script src="data/weeks.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+<script>
+if (location.protocol.indexOf("http") === 0 && "serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  });
+}
+</script>
 </body>
 </html>
