@@ -1,4 +1,4 @@
-/* Paragon PDX Hub — app logic (plain JS, no build step) */
+/* paragonpdx hub — app logic (plain JS, no build step) */
 (function () {
 "use strict";
 
