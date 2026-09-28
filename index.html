@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paragon PDX Hub</title>
+<meta name="description" content="paragonpdx — cause, care, & concern in action. A community hub for compassion outreach in Portland.">
+<meta name="theme-color" content="#0c0c0e">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- App shell: the landing page, Join, and Sign in are public.
+     Everything else needs the one-time site signup. The Learning
+     Center adds its own group-code step at its entry, inside the
+     members' area. The bottom nav is rendered by app.js. -->
+<div id="app">
+  <header class="topbar">
+    <img class="logo" src="logo.png" alt="paragonpdx logo">
+    <div class="brand">paragonpdx<small>cause, care, &amp; concern in action...</small></div>
+    <span class="role-badge" id="role-badge">Member</span>
+  </header>
+
+  <main id="view" aria-live="polite"></main>
+
+  <nav class="bottomnav" id="bottomnav" aria-label="Main"></nav>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="data/questions.js"></script>
+<script src="data/weeks.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
+<script>
+if (location.protocol.indexOf("http") === 0 && "serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  });
+}
+</script>
+</body>
+</html>
