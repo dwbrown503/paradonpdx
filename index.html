@@ -10,6 +10,29 @@
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
+<style>
+/* --- ParagonPDX Terms of Use gate (ported from support services; wording untouched) --- */
+#terms-gate{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.55);overflow-y:auto;display:none;}
+.modal-container{background:#fff;width:100%;max-width:600px;height:85vh;border-radius:12px;
+box-shadow:0 8px 30px rgba(0,0,0,0.12);display:flex;flex-direction:column;overflow:hidden;margin:5vh auto;}
+.modal-header{background:#1a252f;color:#fff;padding:20px;text-align:center;border-bottom:4px solid #34495e;}
+.modal-header h2{font-size:1.4rem;margin:0 0 4px 0;color:#fff;}
+.modal-header p{font-size:0.9rem;color:#b4bcc2;margin:0;}
+.terms-box{flex:1;overflow-y:scroll;padding:25px;color:#333;line-height:1.6;background:#fafafa;-webkit-overflow-scrolling:touch;}
+.terms-box h1{font-size:1.3rem;color:#111;margin:0 0 10px 0;text-align:center;}
+.meta-date{font-size:0.85rem;color:#666;text-align:center;margin:0 0 15px 0;}
+.intro-text{font-size:0.95rem;font-style:italic;color:#555;margin:0 0 20px 0;}
+.terms-box hr{border:0;height:1px;background:#e0e0e0;margin:0 0 20px 0;}
+.terms-box section{margin-bottom:25px;}
+.terms-box section h3{font-size:1.1rem;color:#2c3e50;margin:0 0 12px 0;border-left:4px solid #3498db;padding-left:10px;}
+.plain-words{background:#eef7fd;border:1px solid #d0e8f8;padding:12px 15px;border-radius:6px;font-size:0.95rem;margin:0 0 10px 0;color:#1b4f72;}
+.legal-text{font-size:0.88rem;color:#555;padding-left:5px;margin:0 0 8px 0;}
+.modal-footer{background:#fff;padding:20px;border-top:1px solid #e0e0e0;}
+.btn-accept{width:100%;padding:14px;font-size:1.1rem;font-weight:bold;border:none;border-radius:6px;cursor:pointer;
+background-color:#27ae60;color:#fff;box-shadow:0 4px 6px rgba(39,174,96,0.2);}
+.btn-accept[disabled]{background-color:#bdc3c7;color:#7f8c8d;cursor:not-allowed;box-shadow:none;opacity:0.7;}
+.terms-decline{display:block;text-align:center;margin-top:0.7rem;color:#888;font-size:0.85rem;}
+</style>
 </head>
 <body>
 
@@ -42,5 +65,63 @@ if (location.protocol.indexOf("http") === 0 && "serviceWorker" in navigator) {
   });
 }
 </script>
+<div id="terms-gate">
+  <div class="modal-container">
+    <header class="modal-header">
+      <h2>Terms of Use &amp; Disclaimer</h2>
+      <p>Please read completely to unlock acceptance.</p>
+    </header>
+    <div class="terms-box" id="termsBox"></div>
+    <footer class="modal-footer" id="terms-foot">
+      <button class="btn-accept" id="acceptBtn" disabled onclick="acceptTerms()">I Accept</button>
+      <a href="#" class="terms-decline" onclick="declineTerms();return false;">Decline</a>
+    </footer>
+  </div>
+</div>
+<template id="terms-doc">
+<h1>PARAGONPDX TERMS OF USE &amp; LIABILITY DISCLAIMER</h1>
+<p class="meta-date"><strong>Last Updated:</strong> September 28, 2026</p>
+<p class="intro-text">Please read this document carefully before using this app. By clicking "I Accept" or by accessing or using this application, you agree to be bound by these legally binding terms. If you do not agree, do not use the app.</p>
+<hr>
+<section>
+<h3>1. What this app is / Scope of Service</h3>
+<p class="plain-words"><strong>Plain Words:</strong> paragonpdx support services is a field helper tool. It is not a secure case-management system, and it is not medical, legal, or benefits advice.</p>
+<p class="legal-text"><strong>Legal Terms:</strong> The App is provided solely as an unencrypted, local field operational reference. It does not constitute a database or repository for Protected Health Information (PHI) under healthcare privacy laws. Content and functionality do not constitute medical, legal, mental health, housing, or government benefits advice.</p>
+</section>
+<section>
+<h3>2. Where information lives / Data Storage &amp; Security</h3>
+<p class="plain-words"><strong>Plain Words:</strong> Anything typed into this app is stored only on this phone or tablet, inside its web browser storage. It is not encrypted, and it is not sent to paragonpdx or to any server.</p>
+<p class="legal-text"><strong>Legal Terms:</strong> All user input is stored exclusively within your local device's web browser storage cache. Data is not encrypted by the App and is never transmitted to, backed up by, or stored on paragonpdx servers or any external third-party infrastructure.</p>
+</section>
+<section>
+<h3>3. What can go wrong / Risk of Data Loss</h3>
+<p class="plain-words"><strong>Plain Words:</strong> If this device is lost, stolen, shared with someone else, or if the browser data is cleared, the information in this app may be seen by others or lost for good. Backing up is the worker's job.</p>
+<p class="legal-text"><strong>Legal Terms:</strong> Stored information may be permanently lost or exposed to unauthorized parties if the device is lost, stolen, compromised, shared, or if browser data is cleared. Maintaining secure external backups of any field operational data is entirely the responsibility of the individual worker and their utilizing organization.</p>
+</section>
+<section>
+<h3>4. Whose job it is / Compliance &amp; Responsibility</h3>
+<p class="plain-words"><strong>Plain Words:</strong> The person using this app is responsible for keeping the device safe, for backing up, and for following their own organization's privacy and consent rules when collecting client information.</p>
+<p class="legal-text"><strong>Legal Terms:</strong> The user assumes absolute responsibility for maintaining device security (including passwords and access locks). Users are strictly required to adhere to their own organization's privacy policies, local client consent workflows, and applicable federal, state, and local data privacy regulations when gathering information.</p>
+</section>
+<section>
+<h3>5. DISCLAIMER OF WARRANTIES</h3>
+<p class="legal-text"><strong>Legal Terms:</strong> THE APP IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY LAW, PARAGONPDX DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE APP WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR THAT DATA WILL NOT BE LOST.</p>
+</section>
+<section>
+<h3>6. No blame / Limitation of Liability &amp; Indemnification</h3>
+<p class="plain-words"><strong>Plain Words:</strong> paragonpdx, its volunteers and workers, and Wayne Brown are not responsible or liable for information that is lost, seen by others, or misused, or for any decision made using this app.</p>
+<p class="legal-text"><strong>Legal Terms:</strong> TO THE MAXIMUM EXTENT PERMITTED BY LAW, PARAGONPDX, ITS VOLUNTEERS, BOARD MEMBERS, ASSOCIATED WORKERS, AND WAYNE BROWN SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES. THIS INCLUDES, WITHOUT LIMITATION, DAMAGES FOR LOSS OF DATA, UNAUTHORIZED DATA EXPOSURE, SYSTEM FAILURES, OR ANY OPERATIONAL OR FIELD DECISIONS MADE RELYING UPON THE APP.</p>
+<p class="legal-text"><strong>Indemnification:</strong> You agree to defend, indemnify, and hold harmless paragonpdx and Wayne Brown from and against any claims, liabilities, damages, judgments, or expenses (including reasonable attorneys' fees) arising out of your misuse of the App or your violation of these Terms.</p>
+</section>
+<section>
+<h3>7. Governing Law and Jurisdiction</h3>
+<p class="legal-text"><strong>Legal Terms:</strong> These Terms and any disputes arising out of or relating to the App shall be governed by and construed in accordance with the laws of the State of Oregon, without regard to conflict of law principles. Any legal action or proceeding relating to these Terms shall be brought exclusively in the state or federal courts located in Multnomah County, Oregon.</p>
+</section>
+<section>
+<h3>8. Electronic Acceptance</h3>
+<p class="plain-words"><strong>Plain Words:</strong> This is a plain-words summary, not legal advice. Tapping "I Accept" records your agreement on this device.</p>
+<p class="legal-text"><strong>Legal Terms:</strong> By tapping "I Accept," you acknowledge that you have read, understood, and expressly agree to be legally bound by these Terms. This digital action constitutes your binding electronic signature under the Oregon Uniform Electronic Transactions Act (ORS Chapter 84).</p>
+</section>
+</template>
 </body>
 </html>
