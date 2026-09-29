@@ -778,7 +778,7 @@ function vLesson(day){
     "<h1 class=\"page-title\">Day " + day + "</h1>" +
     '<p class="muted">' + esc(lessonLabel(day)) + "<br>" + esc(e.title) + "</p>" +
     '<div class="card"><p>Read the lesson first, then answer below.</p>' +
-    '<a class="btn secondary small" href="guide/lessons/day-' + pad3(day) + '.html">Read the lesson</a></div>' +
+    '<a class="btn secondary small" href="assest/study/lessons/day-' + pad3(day) + '.html">Read the lesson</a></div>' +
     '<div id="quiz"></div>';
   view.innerHTML = html;
   renderQuiz();
