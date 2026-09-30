@@ -1,99 +1,705 @@
 {
-  "title": "volunteer training",
-  "sub": "paragonpdx universal navigator curriculum",
-  "pass": 16,
-  "handbook": [
-    { "h": "the framework", "body": ["The navigator curriculum is built on the P-A-R-A-G-O-N framework. It covers scripts, checklists, mental health protocols, cultural sensitivity, and LGBTQ+ competency."] },
-    { "h": "full forms list", "list": [
-      "SSA Form SS-5 (ssa.gov/forms/ss-5.pdf)",
-      "Oregon DMV ID Application (select M/F/X self-attestation)",
-      "Oregon Birth Certificate Order (Oregon Vital Records)",
-      "ONE Portal, one.oregon.gov: SNAP + OHP",
-      "OHP 7210 paper backup",
-      "MSC 2099 Authorization for Disclosure",
-      "HMIS ROI (Multnomah County)",
-      "Coordinated Access Housing Assessment info",
-      "Reasonable Accommodation Request",
-      "Zero Income Declaration",
-      "DHS Form 443 Request for Hearing",
-      "Address Confidentiality Program",
-      "DMV Gender Marker Amendment"
-    ] },
-    { "h": "resource contacts", "contacts": [
-      { "name": "211", "note": "call 211 or visit 211info.org", "tel": "211" },
-      { "name": "Multnomah County Crisis", "note": "503-988-4888", "tel": "5039884888" },
-      { "name": "988 Suicide & Crisis Lifeline", "note": "call or text 988", "tel": "988" },
-      { "name": "Q Center", "note": "503-234-7837 — voicemail only, by appointment. Not a crisis line.", "tel": "5032347837" },
-      { "name": "Trans Lifeline", "note": "877-565-8860", "tel": "8775658860" },
-      { "name": "Prism Health", "note": "" },
-      { "name": "Outside In", "note": "" },
-      { "name": "Central City Concern", "note": "" },
-      { "name": "OHSU Transgender Health Program", "note": "" }
-    ] },
-    { "h": "crisis protocol", "steps": [
-      "Stay, listen, don't promise secrecy.",
-      "Ask directly about a self-harm plan, means, and intent.",
-      "If yes: get staff immediately and call the crisis line.",
-      "Document the handoff."
-    ] },
-    { "h": "de-escalation", "body": ["Stop. Offer a choice. Offer water. Offer a break."] },
-    { "h": "housing script", "quote": "Portland's wait is long, and that's not your fault. Let's get you IN the system." },
-    { "h": "id fee waiver template", "body": ["On letterhead:"], "quote": "Per ORS 807.040, [Chosen Name / Legal Name], DOB [date], is experiencing homelessness and residing at [shelter address]. Please waive ID fee. Staff signature, date." },
-    { "h": "universal close script", "quote": "We got [X] done. DHS will mail or call by [date]. Come back Tuesdays. Here's your paper with logins. Is it okay to leave a note for the next volunteer? What felt helpful?" }
-  ],
-  "checklist": {
-    "intro": "Before ending ANY session, check:",
-    "items": [
-      { "k": "Mail", "v": "Does the guest have safe mail? ROI signed for shelter mail?" },
-      { "k": "Phone", "v": "Will the phone be on and charged for the DHS call? Minutes? Use the shelter phone with an 8–10am window?" },
-      { "k": "ID", "v": "Expired more than 1 year? Needs a birth certificate again? Fee waiver letter ready?" },
-      { "k": "Language", "v": "Interpreter requested on ONE?" },
-      { "k": "Literacy", "v": "Can the guest read DHS letters? Offer to read them next time." },
-      { "k": "Storage", "v": "Manila envelope for papers? Photo only if the guest consents and has a phone." },
-      { "k": "Transport", "v": "DMV location: 122nd vs Mall 205? TriMet ticket needed?" },
-      { "k": "Benefits", "v": "EBT stolen? Lock it through ebtEDGE and request a replacement." },
-      { "k": "Denial", "v": "Check the notice: missed verification? Appeal within 45 days with Form 443." },
-      { "k": "OHP", "v": "CCO assigned? Health Share has better shelter clinic linkage." },
-      { "k": "Safety, LGBTQ+", "v": "Housing assignment safe? Misgendering risk? Q Center 503-234-7837 (voicemail only, not a crisis line)." },
-      { "k": "Warrant fear", "v": "Clarify that DHS, 211, and HMIS do NOT check warrants." },
-      { "k": "Medication", "v": "Needs refrigeration or storage?" },
-      { "k": "ID dysphoria", "v": "Offer privacy for the DMV photo." },
-      { "k": "Discrimination", "v": "Offer accompaniment to the clinic, with consent." },
-      { "k": "Housing packet", "v": "One-page doc: legal name, DOB, last 4, HMIS ID, assessment date, phone, shelter." }
-    ]
+ "title": "3cA volunteer training",
+ "sub": "paragonpdx 40-hour curriculum — cause, care, concern, in action",
+ "pass": 32,
+ "handbook": [
+  {
+   "body": [
+    "3cA means cause, care, concern, in action. it is paragon's motto and the name for this work. cause means we believe every person deserves dignity, safety, and care, with no exceptions. care means we bring practical help like water, socks, food, blankets, and information, and most of all our time and attention. concern in action means we do not just feel bad about suffering, we do something about it, week after week.",
+    "paragonpdx is a group of volunteers who show up for unhoused neighbors in portland, oregon. we are not a government agency and we are not a clinic. we are neighbors helping neighbors. that is our strength: people trust us because we keep showing up, not because a form told them to.",
+    "street outreach means going to where people are, under bridges, in parks, in doorways, in cars, in camps, instead of waiting for them to come to us. outreach is not rescuing, because people save themselves and you walk beside them. it is not preaching, it is not a transaction, and you never take pictures of community members without clear, freely given permission. outreach is consistent, respectful presence: the same faces, the same kindness, week after week.",
+    "there are three outreach methods. foot outreach is small teams walking a regular route through areas where unhoused neighbors stay, best for building long term relationships in a neighborhood. stationary outreach is a table or tent set up in one visible spot, best for serving many people quickly and letting people approach on their own terms. targeted outreach is going to find one specific person, best for follow through, which is how people learn you mean what you say. no matter the method, go in pairs or teams, tell someone your route, bring water for yourself, and leave every place cleaner than you found it.",
+    "trust is the whole job, and it is built in small moments repeated many times. show up when you say you will. remember names, and how someone takes their coffee. ask, do not assume: what would help most today. accept no gracefully, because respecting a no builds more trust than any yes. be honest about what you can and cannot do. let silence be okay, because calm, unhurried presence itself says everything. trust takes weeks and months, and that is normal.",
+    "compassion is not a feeling, it is what you do: you notice suffering and you respond with kindness. on the street that looks like getting down to eye level, offering choices so dignity is restored, being comfortable with hard sights and smells without flinching, staying a few extra minutes with someone who is lonely, and speaking about community members with respect when they are not around. many people you meet have been hurt by helpers before, so your steady, non judging presence is itself healing.",
+    "practice scenario: on foot outreach with a partner, you see a man sitting alone under an overpass, wrapped in a blanket, not looking up, and your partner wants to walk right up and hand him a food bag. this example teaches why a direct walk up can feel unsafe or disrespectful, how to greet him from a few feet away using real words you can practice, and what to say and do when he answers leave me alone.",
+    "practice scenario: a woman named maria has taken your socks and water at the same park for three weeks but barely talks, and now she says you people always disappear after a month. this example explores what she may have lived through to say that, what you can honestly promise her and what you must never promise, and how your team makes sure someone keeps visiting even when volunteers change."
+   ],
+   "h": "module 1: showing up — who we are and why we are here"
   },
-  "intake": {
-    "note": "Fill this out on paper with the guest. Don't type a guest's information into the hub.",
-    "groups": [
-      { "h": "names", "fields": ["Chosen name", "Pronouns", "Legal name for DHS/DMV", "Safe mail name"] },
-      { "h": "contact", "fields": ["DOB", "Phone", "Email", "Mailing address (shelter)"] },
-      { "h": "current", "fields": ["SNAP Y/N", "OHP Y/N", "Housing assessed date", "HMIS ID"] },
-      { "h": "safety", "fields": ["Safe shelter?", "Places to avoid", "Curfew / probation restrictions"] },
-      { "h": "accommodation", "fields": ["Interpreter needed?", "Reading help?", "Med storage?"] },
-      { "h": "releases", "fields": ["ROI signed", "MSC 2099 signed"] },
-      { "h": "plan", "fields": ["Today's goal (guest's choice)", "Next step & date", "Volunteer notes (never the full SSN)"] }
-    ]
+  {
+   "body": [
+    "this module is about talking and listening, which is the heart of the work. every other skill in this training depends on your ability to hear people well and speak to them with respect.",
+    "active listening means listening to understand, not to reply. give your full attention: put the phone away, turn your body toward the person, and use soft eye contact without staring. reflect back what you hear so they know you actually heard them. ask open questions that cannot be answered with yes or no. do not rush to fix painful things, because often people need to be heard first. notice feelings, not just facts. many community members have told their story to systems that did not listen, so careful listening is proof that their voice matters.",
+    "your body talks before your words do, and people who have lived on the street are experts at reading body language. get low by crouching or sitting so you are at eye level, because standing over someone feels like power and being level feels like respect. keep your hands visible and relaxed, give a few feet of space and let the person close the gap, match their energy instead of being loud with someone who is shutting down, and watch their signals: stepping back, looking away, and going silent all mean they need space or the topic hurts.",
+    "portland's streets hold people from many backgrounds, and cultural humility means not assuming your way is the normal way and staying curious instead of judgmental. learn names and say them right by asking how to pronounce them. when there is a language gap, slow down and simplify instead of getting louder. respect faith and practice without mocking, preaching, or arguing. catch your own stereotypes by seeing the person in front of you, not your idea of them. and ask about food, touch, and personal space, because these vary from person to person.",
+    "you will often meet couples, families, and groups, and groups have invisible rules about who talks, who decides, and who stays quiet. greet everyone, not just the loudest. do not take sides if people disagree in front of you. make space for the quiet person without forcing them to speak, because they may be the one who needs help most. with families, be warm but keep a respectful distance from children, never photograph children, and if you worry a child is unsafe, tell your volunteer guide privately.",
+    "five common mistakes shut people down. saying you should gives advice nobody asked for, so offer options instead. saying i know exactly how you feel is never true, so say that sounds really hard. rushing, checking your watch, or looking past them says they are a task, so slow down. the pity voice, that sad sweet tone, is felt instantly and hated, so be warm, be normal, be real. and never argue with their reality on the street: stay kind and grounded.",
+    "practice scenario: james, an older man, starts telling you about losing his apartment after his wife died, and he begins to cry. your instinct is to hand him a resource list and tell him about a shelter. this example shows what to do instead: what active listening sounds like in the first two minutes, when the right moment comes to mention resources without cutting off his feelings, and how to end the conversation warmly without making promises you cannot keep.",
+    "practice scenario: you approach a tent where a couple is arguing loudly. they stop when they see you, the woman looks scared, and the man says they are fine and asks what you want. this example covers what to say first in a greeting that addresses both of them, how to stay neutral without ignoring the woman's fear, and when to step back and get your volunteer guide, including the exact signs that the situation is unsafe."
+   ],
+   "h": "module 2: talking and listening — the heart of the work"
   },
-  "test": [
-    { "q": "A guest wants to apply for SNAP and OHP. Where do they apply for both at once?", "o": ["211info.org", "The ONE portal at one.oregon.gov", "ebtEDGE", "The HMIS system"], "a": 1, "why": "The ONE portal handles SNAP and OHP together." },
-    { "q": "The guest can't use the online portal. What is the paper backup for OHP?", "o": ["DHS Form 443", "SSA Form SS-5", "OHP 7210", "MSC 2099"], "a": 2, "why": "OHP 7210 is the paper backup." },
-    { "q": "A guest's benefits were denied. Which form requests a hearing?", "o": ["DHS Form 443", "Zero Income Declaration", "Reasonable Accommodation Request", "MSC 2099"], "a": 0, "why": "DHS Form 443 requests a hearing." },
-    { "q": "How long does a guest have to appeal a denial?", "o": ["10 days", "30 days", "45 days", "90 days"], "a": 2, "why": "Appeals must be filed within 45 days of the denial notice." },
-    { "q": "Which form replaces a lost Social Security card?", "o": ["Oregon DMV ID Application", "SSA Form SS-5", "HMIS ROI", "OHP 7210"], "a": 1, "why": "SSA Form SS-5 replaces a Social Security card." },
-    { "q": "A guest says their EBT benefits were stolen. What do you help them do first?", "o": ["File a hearing request", "Apply for SNAP again", "Lock the card through ebtEDGE and request a replacement", "Tell them to wait for next month"], "a": 2, "why": "Lock the card in ebtEDGE, then request a replacement." },
-    { "q": "A guest's ID expired more than a year ago. What should you check?", "o": ["Whether they need a birth certificate again", "Whether they have a warrant", "Whether their OHP is active", "Nothing, an expired ID works the same"], "a": 0, "why": "An ID expired over a year may need a new birth certificate." },
-    { "q": "When do you go through the interference checklist?", "o": ["Only at a guest's first visit", "Before ending any session", "Only when a guest was denied benefits", "Once a month"], "a": 1, "why": "The checklist runs before ending every session." },
-    { "q": "A guest can't read the letters DHS sends them. What do you do?", "o": ["Tell them to ask shelter staff", "Offer to read the letters with them next time", "Skip the letters and call DHS instead", "Nothing, it isn't part of the session"], "a": 1, "why": "Offer to read DHS letters with them next time." },
-    { "q": "When can you take a photo of a guest's papers?", "o": ["Always, for our records", "Only if the guest consents and has a phone to keep it on", "Only on your own phone", "Never"], "a": 1, "why": "Photos only with consent, kept on the guest's own phone." },
-    { "q": "What goes in the volunteer notes about a guest's Social Security number?", "o": ["The full number, so the next volunteer has it", "Never the full number; the last 4 is optional on intake", "The first 5 digits", "A photo of the card"], "a": 1, "why": "Never the full SSN; the last 4 is optional." },
-    { "q": "Who picks today's goal on the intake sheet?", "o": ["The volunteer", "Shelter staff", "The guest", "The organizer on duty"], "a": 2, "why": "Today's goal is the guest's choice." },
-    { "q": "A guest's chosen name differs from their legal name. Which name do you use when talking with them?", "o": ["Their legal name", "Their chosen name", "Whichever is on their ID", "Their last name only"], "a": 1, "why": "Use the chosen name; the legal name is only for DHS and DMV forms." },
-    { "q": "Which of these does NOT go on the one-page housing packet?", "o": ["HMIS ID", "Housing assessment date", "The full Social Security number", "The shelter they stay at"], "a": 2, "why": "The packet uses the last 4 only, never the full SSN." },
-    { "q": "A guest won't apply because they're afraid of a warrant. What can you tell them?", "o": ["DHS, 211, and HMIS do not check for warrants", "They should wait until the warrant clears", "You'll check for them first", "Nothing, change the subject"], "a": 0, "why": "DHS, 211, and HMIS do not check warrants." },
-    { "q": "A guest shares something heavy and asks you to keep it secret. What do you do?", "o": ["Promise to keep it secret so they keep talking", "Stay, listen, and don't promise secrecy", "End the session right away", "Tell them to talk to someone else"], "a": 1, "why": "Stay and listen, but never promise secrecy." },
-    { "q": "You ask directly and the guest says they have a plan to harm themselves. What comes next?", "o": ["Finish the paperwork first", "Get staff immediately, call the crisis line, and document the handoff", "Give them the crisis number and let them go", "Wait and see if it passes"], "a": 1, "why": "Get staff, call the crisis line, and document the handoff." },
-    { "q": "A guest is getting upset. What are the de-escalation steps?", "o": ["Raise your voice so they can hear you", "Stop, offer a choice, offer water, offer a break", "Ask them to leave", "Keep going with the forms"], "a": 1, "why": "Stop, offer a choice, water, and a break." },
-    { "q": "What is the main message of the housing script?", "o": ["Housing will come in a few weeks", "The wait is long, it isn't their fault, and let's get them into the system", "They should look for housing on their own", "There's no point applying right now"], "a": 1, "why": "Long wait, not their fault, get them in the system." },
-    { "q": "A guest needs a new DMV photo and is uneasy about how they'll look on their ID. What do you offer?", "o": ["Privacy for the DMV photo", "To take the photo yourself", "To skip the ID", "Nothing, it's a quick photo"], "a": 0, "why": "Offer privacy for the DMV photo." }
+  {
+   "body": [
+    "empowerment is a big word for a simple idea: helping people remember they have power over their own lives. people who have been homeless a long time often feel powerless, so you offer choices instead of orders, ask instead of telling, celebrate small wins, and believe someone can change even when they do not believe it yet. trauma steals people's sense of control, and every real choice you give, even which blanket they want, hands a little of it back.",
+    "it is easy to look at someone on the street and see only what is missing, but every person has strengths. you might notice survival skills, the way they watch out for camp neighbors, deep knowledge of streets and bus routes, creativity and humor, and the persistence of getting up and going each day. when you notice a strength, say it out loud. people who only hear what is wrong with them start to believe it, so be the voice that tells the truth about what is right with them.",
+    "a strengths and needs conversation is just a good conversation with a purpose: understanding what someone is good at and what they need right now. start with connection, not questions, and never open with a clipboard. ask about strengths first, because that sets the tone that you see a whole person. ask about needs gently, one or two at a time, so it never feels overwhelming. write your notes down after you leave so nobody feels studied, and follow up next time. never use what someone tells you to judge them.",
+    "people change in stages, not all at once, and understanding this keeps you from pushing someone who is not ready. the stages run from not thinking about it, to thinking about it, to getting ready, to doing it, to keeping it going, with slipping back along the way, which is normal and not failure. the biggest mistake helpers make is treating everyone like they are ready to act, when most people are still thinking about it. meet them where they are, not where you wish they were.",
+    "honoring choices you would not make is the hardest part of empowerment. a community member may refuse shelter in freezing rain or stay with someone who hurts them. the truth you must hold is that it is their life. share honest information, name your concern once kindly, and then respect what they choose. never guilt them, never threaten to stop helping, and never mock their decision, because control dressed up as caring is still control. the only exception is immediate danger.",
+    "putting it together, empowerment, seeing strengths, and respecting choice are one practice, not three separate tricks. every conversation that names what is strong, offers real options, and leaves the decision with the person is 3cA in action, and that is what makes people feel like people again instead of problems to solve.",
+    "practice scenario: you meet denise, who is angry and says everyone just sees a homeless junkie when they look at her, and you have five minutes before your team moves on. this example shows how to name one genuine strength right away, like the courage it took to talk to you, how to ask one strengths question and one needs question without sounding like a survey, and how to leave her feeling seen instead of studied.",
+    "practice scenario: it is november and raining hard, and robert, who has a bad cough, refuses to go to the warming shelter because there are too many rules and too many people. you are worried about him. this example works through which stage of change he is in and how that shapes your approach, what information and options you can offer using real words, and how to walk away without guilt tripping him while planning what to do next week."
+   ],
+   "h": "module 3: lifting people up — strengths, choice, and change"
+  },
+  {
+   "body": [
+    "this module is about knowing where to go: the resources unhoused neighbors actually need, and how to help people reach them without taking over their lives.",
+    "forget the giant binder of every program in oregon and start with what people ask for most on the street: right now supplies like water, food, socks, blankets, and hygiene items; health care without insurance, including dental and wound care; emergency shelter and warming and cooling centers; meal sites and food pantries; money and benefits help like getting an id or applying for food benefits; safety resources for domestic violence and legal aid; and connection basics like free phones, mail, laundry, and day centers with showers. your team keeps a short, current one page list of these with addresses, hours, and phone numbers, updated monthly.",
+    "never recommend what you have not checked, because the fastest way to lose trust is sending someone across town to a program that closed or moved. call first or check the website to confirm hours, address, and that they take walk ins. learn the real requirements, because a free clinic might still need an id. if you can, visit the place yourself so you can give an honest review. always carry a backup option. and be honest about what you do not know: say you will find out and tell them thursday, then actually find out.",
+    "there is a line between helping someone navigate a system and running their life, so stay on the right side. explain the steps in plain language, offer to sit with them while they call if they want company, write things down simply with the name, address, bus line, and what to bring, and go with them the first time if your team allows it and they ask. do not call and pretend to be them, do not fill out forms with made up answers, do not rage at the system in front of them, and never promise outcomes. the goal is that next time, they can do it themselves.",
+    "when a community member will not use a resource, helpers sometimes think they do not want help, but almost always there is a real barrier: they were hurt there before, the rules exclude them, they cannot get there, they do not trust it, or they feel shame. avoidance is often self protection, not stubbornness. instead of asking why they will not go, ask what would need to be different for that place to feel okay, and then listen. sometimes you can fix the barrier, like bus fare or going together, and sometimes you just learn something true.",
+    "resources change constantly, so keep your knowledge alive. your team updates the one page list monthly and someone owns that job. debrief after every outreach and share what you learned. build relationships with staff at the clinic, the shelter, and the food pantry, because a warm handoff with a name works far better than an address on paper. and learn the seasonal realities: portland winters kill, so know warming shelter triggers and where to get dry socks and hand warmers, and summers mean water, shade, and cooling centers.",
+    "practice scenario: you told tanya about a free clinic last month, and today she says she went and found the building empty, telling you that you lied to her. she is upset. this example covers how to respond in the moment with an honest apology that rebuilds trust, what you should have done before recommending the clinic, and what you will do this week to make it right for her.",
+    "practice scenario: you have offered the shelter list to anthony three times and he always refuses, and your teammate says he just does not want help. this example shows how to handle it differently: questions that uncover the real barrier without pressuring him, two alternatives to explore if the barrier is that they will not take his dog, and how to document it so the next volunteer does not start from zero."
+   ],
+   "h": "module 4: knowing where to go — resources and systems"
+  },
+  {
+   "body": [
+    "this module is about respect for every story: meeting people across cultures with humility, and holding the ethical duties you owe every community member no matter who they are.",
+    "you cannot learn every culture before you start, so we aim for something better than mastery: humility. cultural humility means admitting you do not know what you do not know and being okay saying so, treating each person as the expert on their own culture and asking instead of assuming, and keeping on learning one conversation at a time. this is a practice, not a badge you earn once, and the moment you think you have it figured out, you have lost it.",
+    "everyone sees the world through a lens built from their own life: where you grew up, what your family taught, what you have survived and never had to survive. that lens is not bad, but it is not neutral either. know your lens so you can catch it coloring what you see. and remember that whole communities carry historical trauma, like native families who survived boarding schools and black families who survived redlining, so when someone distrusts helpers, that distrust was earned by history. respect it and do not take it personally.",
+    "ethics are the promises you make about how you will act even when nobody is watching. you owe every community member dignity in your words, tone, and actions; honesty, never lying or making promises to get a good reaction; fairness, giving the quiet person the same care as the friendly one; respect for self determination, because your values do not get to drive their decisions; no exploitation, never using community members for your story, social media, or fundraising; and competence, knowing your limits and never giving medical, legal, or mental health advice you are not trained for.",
+    "you will meet people whose choices clash with your beliefs, and the rule is simple: your job is not to approve of their life, your job is to care for them in it. keep shock or disgust off your face, separate the person from the behavior, and never make help conditional on changing. if something truly violates your conscience, step back quietly and let a teammate step in. compassion means suffering with, not fixing from above.",
+    "treating everyone the same sounds good, but it can be unfair, because same treatment ignores different needs. fairness means everyone gets dignity and honesty, and each person gets what they actually need. a printed resource list is not fair to someone who cannot read well; they need you to explain it out loud. equity over identical: that is compassion with its eyes open.",
+    "practice scenario: you are talking with samuel, who is from a west african immigrant community, and he asks if you will pray with him in his tradition, which is unfamiliar to you. you are a christian and unsure what to do. this example explores what cultural humility looks like in that moment and in real words, what you should not do, like faking it or preaching yours instead, and how this differs from being asked to do something unsafe or against your conscience.",
+    "practice scenario: your teammate whispers that a man who is always high is wasting your supplies, and you are uncomfortable. this example works through why this is an ethics problem and not just a rude comment, how to speak to your teammate honestly without attacking them, and when to bring it to your volunteer guide instead of handling it yourself."
+   ],
+   "h": "module 5: respect for every story — culture and ethics"
+  },
+  {
+   "body": [
+    "this module is about telling the difference between conflict and crisis, because they need opposite responses. conflict is disagreement with heat: an argument over space, anger about a rule, a misunderstanding. it is uncomfortable but usually not dangerous, and you can often help. crisis is when someone might get hurt: talk of suicide, an overdose, threats of violence, a medical emergency, a child in danger. crisis needs fast, specific action, not conversation. when in doubt, treat it as more serious, not less.",
+    "conflict rarely explodes from nothing, so learn to read the heat early. watch for a voice getting louder, faster, or suddenly very quiet; pacing, clenched fists, a tight jaw; crowding into someone's space; insults starting; a crowd gathering, because audiences make everything hotter; and someone who was calm suddenly shutting down completely, since freeze is also a warning sign. when you notice these, you have a window to cool things down, so do not wait hoping it blows over.",
+    "de-escalation means using your calm to lower someone else's storm. slow your own breathing, unclench your hands, and speak slower and softer than the other person, because calm is contagious. give space, angle your body slightly sideways, and keep exits clear. listen and name what you see: i can see you are really angry right now. do not match their energy; be the thermostat, not the thermometer. offer choices, not orders. never touch an agitated person, never corner them, never threaten consequences, and never say calm down, because those two words have never calmed anyone down.",
+    "learn the crisis responses for the most urgent situations. if someone talks about suicide, take it seriously always, stay with them, ask directly and kindly if they are thinking about hurting themselves, do not leave them alone, and have your partner call 988 or 911 if there is immediate danger. for an overdose, call 911 immediately, use naloxone if your team carries it and has trained you, stay until help arrives, and know that oregon's good samaritan law protects people who call for help. tell your volunteer guide right away in every crisis.",
+    "for violence or weapons, do not intervene physically, ever: leave calmly with your team and call 911 from a safe distance. for a medical emergency, call 911 with your clearest location and do only what you are trained to do. after any crisis, tell your volunteer guide, write down what happened while it is fresh, and take care of yourself.",
+    "the bravest move is stepping back. step back and get your volunteer guide or call for help when you feel unsafe, when someone has a weapon or threatens violence, when the situation keeps escalating despite your calm, when you are too angry or scared to think clearly, when a child may be in danger, or when you are simply out of your depth. stepping back is wisdom, not quitting. afterward, never shame yourself or a teammate for it: the team debriefs, learns, and goes out again.",
+    "practice scenario: two men in a camp start shouting at each other over a stolen backpack while a small crowd gathers, and you are the closest volunteer. this example identifies the early warning signs and your first move, practices the exact de escalation words to say to each man, and names the signals that mark the point where this becomes a step back situation.",
+    "practice scenario: lisa, who you have known for months, says quietly that she is tired and thinks she is done fighting, and she will not look at you. this example works through whether this is conflict or crisis and how you know, practices asking her directly about hurting herself in exact words, and covers who you tell in what order and what you do while waiting for help."
+   ],
+   "h": "module 6: when things get hard — conflict and crisis"
+  },
+  {
+   "body": [
+    "this module is about doing it right: healthy boundaries, confidentiality, your legal responsibilities, and the role and scope of practice of a 3cA. the state calls this role peer support specialist, but at paragonpdx we call it 3cA.",
+    "boundaries are not walls to keep people out; they are the lines that keep the relationship healthy for them and for you. hold time boundaries by being clear when you are available, role boundaries by being a volunteer and not their caseworker, family, or savior, emotional boundaries by caring deeply without carrying their pain home, physical boundaries by asking before hugging, money boundaries by never lending money and never accepting expensive gifts, and social boundaries by keeping the relationship in the work. when someone tests a boundary, answer with warmth and firmness: i care about you, and i cannot do that, here is what i can do.",
+    "confidentiality means what a community member tells you stays with you and your team: never with friends, family, social media, other community members, or reporters. do not gossip, even without names, because portland's street community is small and details identify people. never post about a community member online or use their story in fundraising without clear, written, freely given permission. share with your team only what they need to know to help. and protect paper and phones: no notes with names lying around, no unlocked screens. confidentiality has three exceptions you must memorize: someone may seriously harm themselves, someone may seriously harm another person, or a child or vulnerable adult is being abused or neglected. in those cases, get help and tell the person honestly that you must act to keep them safe.",
+    "your legal responsibilities start with mandatory reporting: in oregon, if you learn a child is being abused or neglected, you must report it to the oregon child abuse hotline or law enforcement, and this applies to volunteers. when in doubt, report, and tell your volunteer guide immediately. oregon's good samaritan protections cover reasonable emergency help, like calling 911 or giving naloxone in an overdose. never practice without a license: no medical diagnoses, no prescriptions, no legal advice, no therapy. respect the law on the street: no trespassing where you are not welcome, no moving people's belongings, no interfering with police activity. and read, sign, and follow your team's written policies.",
+    "your role and scope of practice in plain words: you are a caring neighbor who shows up consistently, listens well, shares information, encourages people's own choices, connects them to resources, and treats them with dignity. you are not a doctor, nurse, therapist, lawyer, caseworker, landlord, or savior. inside your scope are listening and encouragement, sharing resource information, helping someone make a phone call, basic first aid if trained, handing out supplies, and praying with someone if they ask. outside your scope are therapy, deciding which program someone should pick, speaking for them, medical diagnosis, handling their money or documents, and preaching. when something is outside your scope, make a warm referral: that is doing your job right, not failing.",
+    "professionalism on the street does not mean a suit and tie; it means people can count on you. show up when scheduled and tell your team early if you cannot. never do outreach under the influence. dress for the work with sturdy shoes and weather gear, nothing flashy. leave no trace and respect the spaces where people live. and remember that when you wear the paragonpdx name, you carry everyone's trust: one volunteer's bad behavior can close doors for the whole team.",
+    "practice scenario: kevin tells you he has been stealing from a local store to eat and says do not tell anyone, and later your teammate asks what kevin said. this example works through whether this breaks one of the three confidentiality exceptions and why, practices what you say to your teammate, and covers what you say to kevin next week about food resources without judging the stealing.",
+    "practice scenario: angela asks you to hold four hundred dollars for her so it does not get stolen, and to come to her court date and tell the judge she is doing good. this example sorts out which parts are inside your scope and which are outside, practices a warm, firm response that keeps the relationship strong, and finds a referral or alternative to offer for each request."
+   ],
+   "h": "module 7: doing it right — boundaries, privacy, and the law"
+  },
+  {
+   "body": [
+    "trauma is what happens inside a person when they live through something overwhelming that their mind and body could not process or escape. it can come from one terrible event or from years of smaller wounds. the key is that trauma is not the event, it is the wound the event leaves. among unhoused neighbors, trauma is the background of nearly every life, so assume it is present. trauma changes the brain's alarm system like a smoke detector stuck on high after a real fire, so a loud voice or a sudden movement can set it off. the person is not overreacting.",
+    "trauma responses are survival strategies that once kept the person alive, so learn to see through them instead of misjudging them. fight looks like anger and pushing people away: stay calm, give space, do not take it personally. flight looks like leaving suddenly and avoiding services: let them go and be there next time. freeze looks like going blank and silent: slow down, speak gently, and do not demand answers. fawn looks like agreeing with everything: make it safe to say no and mean it. numbing looks like substance use and flatness: do not lecture about the numbing, address the pain with compassion. the shift that changes everything is asking what happened to you instead of what is wrong with you, and then what is strong in you, and what do you need now.",
+    "the six principles of trauma informed care, from samhsa, are the backbone of this work. safety: people must feel safe physically and emotionally before anything else works. trustworthiness: do what you say and be honest about limits. 3cA: healing happens best with people who have been there, and your lived experience is a gift when it serves them. collaboration: do things with people, not to them or for them. empowerment: every choice you offer and every no you respect hands power back. cultural humility: trauma lands differently in different communities, so respect their way of getting better. run every interaction through these questions: safe, honest, with them not at them, their choice, their culture respected.",
+    "screening on the street means paying caring attention and noticing signs that trauma is active, so you can respond gently, never so you can diagnose. signs include startling easily, strong reactions to small triggers, not sleeping, avoiding certain places or topics, talking about the past as if it is happening now, and shame that seems too big for the situation. adjust yourself, not them: speak softer, give more space, slow down, offer choices. never push someone to tell their trauma story, and watch your own triggers too. when more help is needed, refer gently and then drop it unless they pick it up.",
+    "retraumatization means accidentally causing someone to relive their trauma through your words or actions, and helpers do it more often than they admit. do not surprise people: announce yourself and never touch someone to wake them. do not rush or crowd. explain what is happening as you do it. protect privacy and never ask about trauma in front of others. when you refer someone somewhere, warn them kindly about what to expect, like pat downs or intake questions, so the system does not blindside them. and when you mess up, repair it: apologize, slow down, and ask if they are okay, because repair builds trust faster than perfection ever could.",
+    "recovery from trauma is not getting over it; it is learning to carry it differently, with the alarm quieting, sleep returning, and trust becoming possible again. recovery loops and stalls, and that is normal, not failure. your role is humble and huge: be consistent, celebrate small steps, hold hope when they cannot, connect them to counselors and community as the bridge and not the destination, and take care of yourself, because you cannot pour from an empty cup.",
+    "practice scenario: you are handing out blankets and accidentally drop a metal water bottle with a loud clang, and tyler jumps up with fists clenched, breathing hard, eyes wild. this example names what is happening in his body and which trauma response it is, practices your exact words and body language for the next sixty seconds, and covers what to do after he calms down and what not to do.",
+    "practice scenario: during a strengths and needs conversation with priya, you ask gently about her past, she starts crying and says she cannot talk about that, and your teammate keeps asking questions trying to get the full picture. this example practices what to say to priya right now, how to redirect your teammate in the moment and afterward, and how this connects to the principle of safety."
+   ],
+   "h": "module 8: trauma-informed care — understanding what happened"
+  },
+  {
+   "body": [
+    "this module is about being stronger together: honoring the families and support systems around each community member, working well as a team, and using your voice for advocacy the right way.",
+    "nobody heals alone. behind many community members there are people who care: a mom who calls every week, a brother who brings food, a partner who shares a tent, a friend from the old neighborhood, or a paid caregiver who helps with daily needs. these support systems are gold, so honor them instead of replacing them. family often knows things you do not, and when you leave, they remain. but never assume family involvement is good, because some community members are estranged from family through trauma. let them define their circle: chosen family counts.",
+    "when you meet caregivers and families, introduce yourself and your role clearly so no one is suspicious. respect their knowledge: a mom who has cared for her son for ten years knows more than your training taught you. do not take sides in family conflict; stay neutral and kind. protect the community member's privacy, because being family does not grant full access to what was told to you in confidence, so ask the community member first. treat paid care workers as teammates: coordinate, do not compete.",
+    "outreach is team work, and how you treat fellow volunteers is watched by community members, who notice everything. communicate and share what you learn through your team's system every time. know your role on the team for the day. debrief after every outreach: what went well, what was hard, who needs follow up. handle disagreements privately and never argue with a teammate in front of community members. welcome new volunteers with patience. and tell your volunteer guide about real problems, like a teammate crossing boundaries or burning out, because speaking up protects everyone.",
+    "advocacy means speaking up to make things fairer for someone who is not being heard. on the street that looks like kindly saying your friend was next in line, calling a clinic to ask why someone was turned away, helping someone write a complaint letter, or standing next to someone at an appointment so they are treated with respect. it also means telling your team about patterns, like several people denied at the same shelter, and showing up at neighborhood meetings or writing to officials about what you see. advocacy is not speaking for someone without their permission, not aggression that closes doors, not going rogue on big moves that must go through leadership, and not endless: you advocate, follow up, accept what you cannot change, and keep showing up with blankets and kindness.",
+    "your best advocacy tool is the warm handoff: personally connecting a community member to the next helper instead of just giving an address. cold is the clinic is at fifth and oak. warm is the clinic is at fifth and oak, ask for lisa at the front desk, tell her jordan from paragonpdx sent you, she is kind, want me to write that down, i can walk you there thursday if you want company. every new place is scary, and a name, a face, and an offer of company turn a wall into a door. be the bridge.",
+    "practice scenario: you are talking with chris at his camp when a woman arrives upset, saying she is his mother and demanding to know who you people are and what you are telling her son. she is scared and a little hostile. this example looks at what sits underneath her hostility, practices an introduction that brings her into the circle instead of treating her as a problem, and works through what to do if chris whispers not to tell her anything, honoring him while staying kind to her.",
+    "practice scenario: for the third week in a row, community members tell you they were turned away from the same shelter with no clear reason. this example covers what information to gather before acting, what the right first advocacy step is and who needs to be involved, and what going rogue would look like and why it harms the community member."
+   ],
+   "h": "module 9: stronger together — families, teams, and advocacy"
+  },
+  {
+   "body": [
+    "this final module is about recovery, resilience, and wellness: what they mean for the people you serve, and how you take care of yourself so you can stay in this work for the long road.",
+    "recovery means getting better from addiction, mental health struggles, trauma, and the damage of life on the street. recovery is possible for everyone and no one is too far gone. it belongs to the person: their journey, their pace, their definition of better. it is not a straight line, so expect loops and setbacks, and treat a relapse as information about what still needs healing, not failure. many paths work, from twelve step programs to counseling, faith, medication, community, work, art, and nature, so respect the path they choose. your honest belief that things can get better is practical hope. what you do is encourage, connect to resources, celebrate progress, stay through setbacks, and never shame. what you do not do is monitor, police, or keep score.",
+    "resilience is the ability to bend without breaking, and the secret is that the people you serve are some of the most resilient humans you will ever meet: surviving homelessness is resilience. your job is not to give people resilience but to notice it, name it, and nurture it. notice that they got through last winter out here. name it so they can see it too. nurture it, because resilience grows with connection, rest, safety, and small wins. resilience also grows in communities, not just individuals, so honor the mutual care you see in camps and never break it up trying to help.",
+    "wellness is bigger than not sick: it is the whole person doing as well as possible across eight parts, for them and for you. physical means sleep, food, movement, and medical care. emotional means feeling feelings without drowning in them. mental means thinking clearly and making decisions. social means connection with people who care. spiritual means meaning and purpose, whatever gives life depth. environmental means a safe, decent place to be, which is why housing matters so much. financial means enough resources to live. occupational means having something meaningful to do with your days. you cannot fix all eight for someone, but you can ask which feels hardest right now and start there.",
+    "this work will cost you something, so know the honest signs. compassion fatigue is the slow wearing down of your ability to care: numbness toward people's pain, irritability, dreading outreach days. it is your heart's warning light, not a character flaw. burnout is total depletion: exhaustion that sleep does not fix, hopelessness about the work, getting sick often. secondary trauma means absorbing others' trauma until you carry symptoms yourself, like nightmares and jumpiness. this is real and common in helpers. if you notice these signs in yourself, tell your volunteer guide: getting help is professional, not weak.",
+    "self care is not bubble baths and inspirational quotes; it is the practical maintenance that keeps you doing this work for years instead of months. build your plan from five real practices: rest, meaning real sleep and real days off; body, meaning food, water, and movement; connection, meaning people who are yours where you do not have to be the helper; processing, meaning talking about the hard stuff through debriefing, journaling, prayer, or counseling; and joy and meaning, meaning remembering why you started and letting yourself laugh and play. write the plan down with specifics, like in bed by ten on outreach nights, because specific plans get followed and vague wishes do not. you matter too, and taking care of yourself is how you stay in the work.",
+    "practice scenario: derek was sixty days sober and doing well, and today you find him drunk and ashamed, saying he is a failure and you should not waste your time on him. this example shows how the ideas of recovery not being straight and resilience meaning bend, not break, shape your response, practices what to say with no shame and no lecture, just truth and care, and covers what to do next week to support him without policing him.",
+    "practice scenario: you have done outreach every week for four months, lately you dread thursdays, last week you snapped at a community member, and you are ashamed and thinking of quitting. this example works through whether this is compassion fatigue, burnout, or secondary trauma, since it can be more than one, covers who to tell and what to ask for, and returns to your self care plan to find what is missing and what changes this week."
+   ],
+   "h": "module 10: recovery, wellness, and taking care of you"
+  }
+ ],
+ "checklist": {
+  "intro": "run this checklist before every outreach shift, and again after. pre-shift keeps you safe and ready; post-shift keeps the work honest and the team strong.",
+  "items": [
+   {
+    "k": "team and roles",
+    "v": "do you know your team, your role today, and who's leading?"
+   },
+   {
+    "k": "route shared",
+    "v": "has someone off-site been told your route and return time?"
+   },
+   {
+    "k": "buddy system",
+    "v": "is everyone paired up — nobody going out alone?"
+   },
+   {
+    "k": "phone charged",
+    "v": "is your phone charged and is the team group chat working?"
+   },
+   {
+    "k": "supplies packed",
+    "v": "water, food, socks, blankets, hygiene supplies — what does today need?"
+   },
+   {
+    "k": "resource list current",
+    "v": "is your one-page resource list this month's version, with hours and addresses you trust?"
+   },
+   {
+    "k": "safety gear",
+    "v": "sturdy shoes, weather gear, first aid kit — and naloxone only if your team carries it and you're trained?"
+   },
+   {
+    "k": "mindset check",
+    "v": "phone away, calm, ready to listen — are you bringing patience, not a plan to fix?"
+   },
+   {
+    "k": "boundaries reset",
+    "v": "do you know your time and role limits for today — what you can and can't do?"
+   },
+   {
+    "k": "debrief done",
+    "v": "did the team debrief — what went well, what was hard, who needs follow-up?"
+   },
+   {
+    "k": "follow-ups logged",
+    "v": "did you write down who needs what next time (after you left, never in their face)?"
+   },
+   {
+    "k": "resource changes shared",
+    "v": "did any hours, addresses, or rules change today — did the team update the one-page list?"
+   },
+   {
+    "k": "incidents reported",
+    "v": "any crisis, conflict, weapon, or safety scare — did your volunteer guide hear about it?"
+   },
+   {
+    "k": "confidentiality kept",
+    "v": "no names or stories shared outside the team, nothing posted online, no photos without clear permission?"
+   },
+   {
+    "k": "self check",
+    "v": "how are you, honestly — do you need to talk to your volunteer guide before next time?"
+   },
+   {
+    "k": "restock list",
+    "v": "what's running low for next outreach — who owns restocking it?"
+   },
+   {
+    "k": "leave no trace",
+    "v": "did you leave every place cleaner than you found it?"
+   },
+   {
+    "k": "everyone home",
+    "v": "has every team member checked in safe after the shift?"
+   }
   ]
+ },
+ "intake": {
+  "note": "fill this out on paper, together with the community member, unhurried — never as an interrogation. never type a community member's personal information into the hub or any phone or computer. paper stays with your team's private records, stored where only the team can see it.",
+  "groups": [
+   {
+    "h": "who they are — as they define it",
+    "fields": [
+     "name they go by",
+     "pronouns, only if they offer them",
+     "how to find them next time (general area — never write an exact camp location unless they ask you to)",
+     "anything they want us to know about how to approach them"
+    ]
+   },
+   {
+    "h": "strengths and what's working",
+    "fields": [
+     "what are you good at?",
+     "who do you trust — who's in your circle?",
+     "what's kept you going?",
+     "what's going okay right now, even if small"
+    ]
+   },
+   {
+    "h": "what would help right now",
+    "fields": [
+     "hardest part of your days right now",
+     "one thing that could be easier this week",
+     "anything you've said no to that we should remember and respect"
+    ]
+   },
+   {
+    "h": "health and safety — only what they choose to share",
+    "fields": [
+     "anything hurting or worrying them, in their own words",
+     "do they feel safe where they sleep?",
+     "is there anyone they feel unsafe around?",
+     "do they want connection to a clinic, counselor, or other help — no pressure"
+    ]
+   },
+   {
+    "h": "follow-up — what we promised",
+    "fields": [
+     "what you said you'd do",
+     "when you'll be back",
+     "which team member owns the follow-up",
+     "their words for what would help most next time"
+    ]
+   }
+  ]
+ },
+ "test": [
+  {
+   "q": "paragonpdx's work is best described as:",
+   "o": [
+    "a government housing program",
+    "cause, care, and concern in action — neighbors showing up for unhoused neighbors",
+    "an outdoor medical clinic",
+    "a job placement service"
+   ],
+   "a": 1,
+   "why": "paragonpdx is neighbors showing up with cause, care, and concern in action — not a government program, clinic, or job service."
+  },
+  {
+   "q": "which outreach method is best for checking on one specific person?",
+   "o": [
+    "foot outreach",
+    "stationary outreach",
+    "targeted outreach",
+    "phone outreach"
+   ],
+   "a": 2,
+   "why": "targeted outreach (check-ins) means going to find one specific person — follow-through is how people learn you mean what you say."
+  },
+  {
+   "q": "a community member says \"no thanks\" to your offer. you should:",
+   "o": [
+    "leave the item anyway",
+    "accept it warmly and let them know you'll be around",
+    "ask why they're refusing",
+    "come back every 10 minutes until they accept"
+   ],
+   "a": 1,
+   "why": "\"no thanks\" is a complete answer. respecting a no builds more trust than any yes."
+  },
+  {
+   "q": "trust is built mainly by:",
+   "o": [
+    "big promises",
+    "small, consistent, reliable actions over time",
+    "giving the most supplies",
+    "having all the answers"
+   ],
+   "a": 1,
+   "why": "trust is built in small moments repeated many times. reliability is love in work clothes."
+  },
+  {
+   "q": "active listening means:",
+   "o": [
+    "waiting for your turn to talk",
+    "listening to understand, then reflecting back what you heard",
+    "asking only yes-or-no questions",
+    "giving advice quickly"
+   ],
+   "a": 1,
+   "why": "active listening is listening to understand, not to reply — then reflecting back what you heard so they know you heard them."
+  },
+  {
+   "q": "when talking with someone sitting on the ground, you should:",
+   "o": [
+    "stand over them so they can see you",
+    "get down to eye level to show respect",
+    "stay in your car",
+    "speak very loudly"
+   ],
+   "a": 1,
+   "why": "standing over someone feels like power; being level feels like respect."
+  },
+  {
+   "q": "cultural humility means:",
+   "o": [
+    "knowing everything about every culture",
+    "admitting what you don't know, asking respectfully, and keep learning",
+    "avoiding people different from you",
+    "teaching others your culture"
+   ],
+   "a": 1,
+   "why": "you can't master every culture — stay curious instead of judgmental, ask don't assume, and keep learning."
+  },
+  {
+   "q": "which phrase shuts people down?",
+   "o": [
+    "\"what would help most today?\"",
+    "\"that sounds really hard.\"",
+    "\"you should just go to the shelter.\"",
+    "\"thank you for telling me.\""
+   ],
+   "a": 2,
+   "why": "\"you should...\" advice nobody asked for feels like judgment. offer options instead."
+  },
+  {
+   "q": "empowerment means:",
+   "o": [
+    "making decisions for people",
+    "helping people remember they have power over their own lives",
+    "convincing people to take services",
+    "setting goals for others"
+   ],
+   "a": 1,
+   "why": "empowerment says you are the expert on your own life — support their decisions, don't make them."
+  },
+  {
+   "q": "in a strengths-and-needs conversation, ask about strengths first because:",
+   "o": [
+    "it's faster",
+    "it shows you see a whole person, not just problems",
+    "needs don't matter",
+    "the state requires that order"
+   ],
+   "a": 1,
+   "why": "asking strengths first sets the tone: i see you as a whole person, not just a list of problems."
+  },
+  {
+   "q": "someone in the \"thinking about it\" stage of change needs:",
+   "o": [
+    "to be signed up for a program immediately",
+    "listening and space to weigh things without pressure",
+    "warnings about what will happen if they don't change",
+    "to be left alone forever"
+   ],
+   "a": 1,
+   "why": "in the thinking stage they're weighing it — listen, ask what they see as the good and bad sides, don't push."
+  },
+  {
+   "q": "a community member makes a choice you disagree with (not immediately dangerous). you should:",
+   "o": [
+    "refuse to help them",
+    "give honest information, name your concern once, then respect their choice",
+    "guilt them into choosing better",
+    "decide for them"
+   ],
+   "a": 1,
+   "why": "it is their life. share information honestly, name your concern once kindly, then let go."
+  },
+  {
+   "q": "before recommending a resource, you should:",
+   "o": [
+    "memorize its mission statement",
+    "verify its hours, address, and real requirements",
+    "get written permission from your guide",
+    "only recommend places you've slept at"
+   ],
+   "a": 1,
+   "why": "sending someone across town to a closed or wrong place destroys trust — call first and know the real requirements."
+  },
+  {
+   "q": "the most useful resource list for outreach is:",
+   "o": [
+    "every program in oregon in a big binder",
+    "a short, current one-page list of what people ask for most",
+    "whatever you remember",
+    "a five-year-old list"
+   ],
+   "a": 1,
+   "why": "a short list you trust beats a long list you don't — one page, updated monthly."
+  },
+  {
+   "q": "when helping someone navigate a system, you should:",
+   "o": [
+    "do everything for them",
+    "explain steps plainly, offer company, and let them lead",
+    "promise it will work out",
+    "pretend to be them on the phone"
+   ],
+   "a": 1,
+   "why": "you are a guide, not a driver — the goal is that next time they can do it themselves."
+  },
+  {
+   "q": "a community member won't use a resource. the most likely reason is:",
+   "o": [
+    "laziness",
+    "a real barrier — past hurt, rules, distance, or distrust",
+    "they enjoy suffering",
+    "they are ungrateful"
+   ],
+   "a": 1,
+   "why": "avoidance is usually self-protection, not stubbornness. ask what would need to be different for that place to feel okay."
+  },
+  {
+   "q": "your own background shapes how you see others. the ethical move is to:",
+   "o": [
+    "pretend you have no biases",
+    "notice your lens and catch it when it colors what you see",
+    "only serve people like you",
+    "ignore the topic"
+   ],
+   "a": 1,
+   "why": "everyone sees through a lens. when you know yours, you can catch it coloring what you see."
+  },
+  {
+   "q": "which is an ethical duty you owe every community member?",
+   "o": [
+    "making their decisions",
+    "honesty, dignity, fairness, and never using them for your own purposes",
+    "posting their story to raise awareness",
+    "promising whatever makes them happy"
+   ],
+   "a": 1,
+   "why": "dignity, honesty, fairness, no exploitation — promises you keep even when nobody is watching."
+  },
+  {
+   "q": "when a community member's values clash with yours, you should:",
+   "o": [
+    "explain why you're right",
+    "make help conditional on them changing",
+    "keep caring for them without requiring them to share your values",
+    "stop serving them"
+   ],
+   "a": 2,
+   "why": "your job is not to approve of their life — it is to care for them in it. never make help conditional."
+  },
+  {
+   "q": "fairness in outreach means:",
+   "o": [
+    "treating everyone identically",
+    "giving each person dignity and what they actually need",
+    "giving more to friendly people",
+    "following rules rigidly no matter what"
+   ],
+   "a": 1,
+   "why": "same treatment can be unfair. equity means each person gets dignity and what they actually need."
+  },
+  {
+   "q": "the difference between conflict and crisis is:",
+   "o": [
+    "conflict is louder",
+    "crisis means someone might get hurt and needs fast action",
+    "there is no difference",
+    "volunteers never face crisis"
+   ],
+   "a": 1,
+   "why": "conflict needs calm and listening; crisis needs fast, specific action. know which you're facing in the first ten seconds."
+  },
+  {
+   "q": "a good de-escalation move is:",
+   "o": [
+    "shouting \"calm down!\"",
+    "speaking slower and softer, giving space, offering choices",
+    "blocking the exit",
+    "matching their volume"
+   ],
+   "a": 1,
+   "why": "calm is contagious — be the thermostat, not the thermometer. \"calm down\" has never calmed anyone down."
+  },
+  {
+   "q": "someone hints they want to die. you should:",
+   "o": [
+    "decide they don't mean it",
+    "take it seriously, stay, ask directly, get help (988 or 911)",
+    "change the subject",
+    "leave to find help alone"
+   ],
+   "a": 1,
+   "why": "always take it seriously. stay, ask directly — asking does not plant the idea — and get help."
+  },
+  {
+   "q": "you see a weapon during a fight. you should:",
+   "o": [
+    "grab it",
+    "step between them",
+    "leave calmly with your team and call 911 from safety",
+    "keep working like nothing is happening"
+   ],
+   "a": 2,
+   "why": "never intervene physically. your safety comes first — leave calmly with your team and call 911 from a safe distance."
+  },
+  {
+   "q": "a healthy boundary sounds like:",
+   "o": [
+    "\"i'll do anything, anytime\"",
+    "\"i care about you, and i can't do that — here's what i can do\"",
+    "\"not my problem\"",
+    "\"maybe in a few months\""
+   ],
+   "a": 1,
+   "why": "warmth plus firmness, no long explanation needed. consistency is kindness — boundaries keep the relationship healthy."
+  },
+  {
+   "q": "you must break confidentiality when:",
+   "o": [
+    "a friend is curious",
+    "someone may seriously harm themselves or others, or a child is being abused",
+    "you want to post online",
+    "someone gossips about you"
+   ],
+   "a": 1,
+   "why": "three exceptions only: serious harm to self, serious harm to others, or a child or vulnerable adult being abused."
+  },
+  {
+   "q": "in oregon, learning that a child is being abused means you:",
+   "o": [
+    "wait and see",
+    "must report it and tell your volunteer guide immediately",
+    "confront the abuser",
+    "keep it secret"
+   ],
+   "a": 1,
+   "why": "in oregon this applies to volunteers. when in doubt, report — and tell your volunteer guide immediately."
+  },
+  {
+   "q": "which is outside a volunteer's scope of practice?",
+   "o": [
+    "listening and encouraging",
+    "sharing clinic hours",
+    "diagnosing illness or giving legal advice",
+    "handing out blankets"
+   ],
+   "a": 2,
+   "why": "you may share information, but never diagnose, prescribe, give legal advice, or provide therapy."
+  },
+  {
+   "q": "trauma is:",
+   "o": [
+    "the bad event itself",
+    "the wound the event leaves inside a person",
+    "always visible",
+    "the same for everyone"
+   ],
+   "a": 1,
+   "why": "trauma is not the event — it is the wound the event leaves inside. two people carry the same event differently."
+  },
+  {
+   "q": "the shift at the heart of trauma-informed care is:",
+   "o": [
+    "from \"what happened to you?\" to \"what's wrong with you?\"",
+    "from \"what's wrong with you?\" to \"what happened to you?\"",
+    "from caring to controlling",
+    "from listening to lecturing"
+   ],
+   "a": 1,
+   "why": "stop asking \"what's wrong with you?\" and start asking \"what happened to you?\" — that one change makes all the difference."
+  },
+  {
+   "q": "which is not a trauma-informed principle?",
+   "o": [
+    "safety",
+    "trustworthiness",
+    "obedience",
+    "empowerment"
+   ],
+   "a": 2,
+   "why": "the six principles are safety, trustworthiness, 3cA, collaboration, empowerment, cultural humility — obedience is control, not care."
+  },
+  {
+   "q": "to avoid retraumatizing someone, you should:",
+   "o": [
+    "surprise them to save time",
+    "announce yourself, explain what you're doing, move at their pace",
+    "get their full trauma story",
+    "rush through the interaction"
+   ],
+   "a": 1,
+   "why": "don't surprise, rush, or crowd — announce yourself, explain what you're doing, move at their pace, protect privacy."
+  },
+  {
+   "q": "when it comes to a community member's family, you should:",
+   "o": [
+    "assume family is always good",
+    "ask who they trust and respect their definition of family",
+    "share everything with their relatives",
+    "avoid families entirely"
+   ],
+   "a": 1,
+   "why": "never assume family is safe — for some, family was the source of harm. let them define their circle; chosen family counts."
+  },
+  {
+   "q": "advocacy means:",
+   "o": [
+    "yelling at people who say no",
+    "speaking up to make things fairer for someone who isn't being heard",
+    "making decisions for others",
+    "only helping the deserving"
+   ],
+   "a": 1,
+   "why": "advocacy is using your voice for someone else's good — firm, calm, and persistent beats loud every time."
+  },
+  {
+   "q": "before advocating for someone, you should:",
+   "o": [
+    "act without asking",
+    "ask their permission and let their voice come first",
+    "check social media",
+    "wait a year"
+   ],
+   "a": 1,
+   "why": "their voice first — never speak for someone without their permission."
+  },
+  {
+   "q": "a warm handoff is:",
+   "o": [
+    "giving a blanket",
+    "personally connecting someone to the next helper — a name, an introduction, company if wanted",
+    "dropping them at a door",
+    "sending a text"
+   ],
+   "a": 1,
+   "why": "a name, a face, and an offer of company turn a wall into a door — be the bridge, not just an address."
+  },
+  {
+   "q": "recovery is:",
+   "o": [
+    "a straight line",
+    "the person's own journey — possible for everyone, with setbacks being normal",
+    "only for young people",
+    "the volunteer's job to manage"
+   ],
+   "a": 1,
+   "why": "recovery belongs to the person — their pace, their definition. setbacks are normal, not failure."
+  },
+  {
+   "q": "compassion fatigue is:",
+   "o": [
+    "proof you're a bad person",
+    "the slow wearing down of your ability to care — a warning light",
+    "rare and unimportant",
+    "the same as one tired day"
+   ],
+   "a": 1,
+   "why": "it is your heart's warning light, not a character flaw — tell your volunteer guide and get support."
+  },
+  {
+   "q": "if you notice burnout signs in yourself, you should:",
+   "o": [
+    "hide it",
+    "tell your volunteer guide and get support",
+    "quit without a word",
+    "work harder"
+   ],
+   "a": 1,
+   "why": "getting help is professional, not weak — that is what your volunteer guide is for."
+  },
+  {
+   "q": "the best self-care plan is:",
+   "o": [
+    "vague wishes",
+    "specific and practical — rest, body care, connection, processing, joy",
+    "only for struggling people",
+    "selfish"
+   ],
+   "a": 1,
+   "why": "specific plans get followed; vague wishes don't. self-care is how you stay in the work for years instead of months."
+  }
+ ]
 }
