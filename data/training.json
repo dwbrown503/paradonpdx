@@ -1,0 +1,99 @@
+{
+  "title": "volunteer training",
+  "sub": "paragonpdx universal navigator curriculum",
+  "pass": 16,
+  "handbook": [
+    { "h": "the framework", "body": ["The navigator curriculum is built on the P-A-R-A-G-O-N framework. It covers scripts, checklists, mental health protocols, cultural sensitivity, and LGBTQ+ competency."] },
+    { "h": "full forms list", "list": [
+      "SSA Form SS-5 (ssa.gov/forms/ss-5.pdf)",
+      "Oregon DMV ID Application (select M/F/X self-attestation)",
+      "Oregon Birth Certificate Order (Oregon Vital Records)",
+      "ONE Portal, one.oregon.gov: SNAP + OHP",
+      "OHP 7210 paper backup",
+      "MSC 2099 Authorization for Disclosure",
+      "HMIS ROI (Multnomah County)",
+      "Coordinated Access Housing Assessment info",
+      "Reasonable Accommodation Request",
+      "Zero Income Declaration",
+      "DHS Form 443 Request for Hearing",
+      "Address Confidentiality Program",
+      "DMV Gender Marker Amendment"
+    ] },
+    { "h": "resource contacts", "contacts": [
+      { "name": "211", "note": "call 211 or visit 211info.org", "tel": "211" },
+      { "name": "Multnomah County Crisis", "note": "503-988-4888", "tel": "5039884888" },
+      { "name": "988 Suicide & Crisis Lifeline", "note": "call or text 988", "tel": "988" },
+      { "name": "Q Center", "note": "503-234-7837 — voicemail only, by appointment. Not a crisis line.", "tel": "5032347837" },
+      { "name": "Trans Lifeline", "note": "877-565-8860", "tel": "8775658860" },
+      { "name": "Prism Health", "note": "" },
+      { "name": "Outside In", "note": "" },
+      { "name": "Central City Concern", "note": "" },
+      { "name": "OHSU Transgender Health Program", "note": "" }
+    ] },
+    { "h": "crisis protocol", "steps": [
+      "Stay, listen, don't promise secrecy.",
+      "Ask directly about a self-harm plan, means, and intent.",
+      "If yes: get staff immediately and call the crisis line.",
+      "Document the handoff."
+    ] },
+    { "h": "de-escalation", "body": ["Stop. Offer a choice. Offer water. Offer a break."] },
+    { "h": "housing script", "quote": "Portland's wait is long, and that's not your fault. Let's get you IN the system." },
+    { "h": "id fee waiver template", "body": ["On letterhead:"], "quote": "Per ORS 807.040, [Chosen Name / Legal Name], DOB [date], is experiencing homelessness and residing at [shelter address]. Please waive ID fee. Staff signature, date." },
+    { "h": "universal close script", "quote": "We got [X] done. DHS will mail or call by [date]. Come back Tuesdays. Here's your paper with logins. Is it okay to leave a note for the next volunteer? What felt helpful?" }
+  ],
+  "checklist": {
+    "intro": "Before ending ANY session, check:",
+    "items": [
+      { "k": "Mail", "v": "Does the guest have safe mail? ROI signed for shelter mail?" },
+      { "k": "Phone", "v": "Will the phone be on and charged for the DHS call? Minutes? Use the shelter phone with an 8–10am window?" },
+      { "k": "ID", "v": "Expired more than 1 year? Needs a birth certificate again? Fee waiver letter ready?" },
+      { "k": "Language", "v": "Interpreter requested on ONE?" },
+      { "k": "Literacy", "v": "Can the guest read DHS letters? Offer to read them next time." },
+      { "k": "Storage", "v": "Manila envelope for papers? Photo only if the guest consents and has a phone." },
+      { "k": "Transport", "v": "DMV location: 122nd vs Mall 205? TriMet ticket needed?" },
+      { "k": "Benefits", "v": "EBT stolen? Lock it through ebtEDGE and request a replacement." },
+      { "k": "Denial", "v": "Check the notice: missed verification? Appeal within 45 days with Form 443." },
+      { "k": "OHP", "v": "CCO assigned? Health Share has better shelter clinic linkage." },
+      { "k": "Safety, LGBTQ+", "v": "Housing assignment safe? Misgendering risk? Q Center 503-234-7837 (voicemail only, not a crisis line)." },
+      { "k": "Warrant fear", "v": "Clarify that DHS, 211, and HMIS do NOT check warrants." },
+      { "k": "Medication", "v": "Needs refrigeration or storage?" },
+      { "k": "ID dysphoria", "v": "Offer privacy for the DMV photo." },
+      { "k": "Discrimination", "v": "Offer accompaniment to the clinic, with consent." },
+      { "k": "Housing packet", "v": "One-page doc: legal name, DOB, last 4, HMIS ID, assessment date, phone, shelter." }
+    ]
+  },
+  "intake": {
+    "note": "Fill this out on paper with the guest. Don't type a guest's information into the hub.",
+    "groups": [
+      { "h": "names", "fields": ["Chosen name", "Pronouns", "Legal name for DHS/DMV", "Safe mail name"] },
+      { "h": "contact", "fields": ["DOB", "Phone", "Email", "Mailing address (shelter)"] },
+      { "h": "current", "fields": ["SNAP Y/N", "OHP Y/N", "Housing assessed date", "HMIS ID"] },
+      { "h": "safety", "fields": ["Safe shelter?", "Places to avoid", "Curfew / probation restrictions"] },
+      { "h": "accommodation", "fields": ["Interpreter needed?", "Reading help?", "Med storage?"] },
+      { "h": "releases", "fields": ["ROI signed", "MSC 2099 signed"] },
+      { "h": "plan", "fields": ["Today's goal (guest's choice)", "Next step & date", "Volunteer notes (never the full SSN)"] }
+    ]
+  },
+  "test": [
+    { "q": "A guest wants to apply for SNAP and OHP. Where do they apply for both at once?", "o": ["211info.org", "The ONE portal at one.oregon.gov", "ebtEDGE", "The HMIS system"], "a": 1, "why": "The ONE portal handles SNAP and OHP together." },
+    { "q": "The guest can't use the online portal. What is the paper backup for OHP?", "o": ["DHS Form 443", "SSA Form SS-5", "OHP 7210", "MSC 2099"], "a": 2, "why": "OHP 7210 is the paper backup." },
+    { "q": "A guest's benefits were denied. Which form requests a hearing?", "o": ["DHS Form 443", "Zero Income Declaration", "Reasonable Accommodation Request", "MSC 2099"], "a": 0, "why": "DHS Form 443 requests a hearing." },
+    { "q": "How long does a guest have to appeal a denial?", "o": ["10 days", "30 days", "45 days", "90 days"], "a": 2, "why": "Appeals must be filed within 45 days of the denial notice." },
+    { "q": "Which form replaces a lost Social Security card?", "o": ["Oregon DMV ID Application", "SSA Form SS-5", "HMIS ROI", "OHP 7210"], "a": 1, "why": "SSA Form SS-5 replaces a Social Security card." },
+    { "q": "A guest says their EBT benefits were stolen. What do you help them do first?", "o": ["File a hearing request", "Apply for SNAP again", "Lock the card through ebtEDGE and request a replacement", "Tell them to wait for next month"], "a": 2, "why": "Lock the card in ebtEDGE, then request a replacement." },
+    { "q": "A guest's ID expired more than a year ago. What should you check?", "o": ["Whether they need a birth certificate again", "Whether they have a warrant", "Whether their OHP is active", "Nothing, an expired ID works the same"], "a": 0, "why": "An ID expired over a year may need a new birth certificate." },
+    { "q": "When do you go through the interference checklist?", "o": ["Only at a guest's first visit", "Before ending any session", "Only when a guest was denied benefits", "Once a month"], "a": 1, "why": "The checklist runs before ending every session." },
+    { "q": "A guest can't read the letters DHS sends them. What do you do?", "o": ["Tell them to ask shelter staff", "Offer to read the letters with them next time", "Skip the letters and call DHS instead", "Nothing, it isn't part of the session"], "a": 1, "why": "Offer to read DHS letters with them next time." },
+    { "q": "When can you take a photo of a guest's papers?", "o": ["Always, for our records", "Only if the guest consents and has a phone to keep it on", "Only on your own phone", "Never"], "a": 1, "why": "Photos only with consent, kept on the guest's own phone." },
+    { "q": "What goes in the volunteer notes about a guest's Social Security number?", "o": ["The full number, so the next volunteer has it", "Never the full number; the last 4 is optional on intake", "The first 5 digits", "A photo of the card"], "a": 1, "why": "Never the full SSN; the last 4 is optional." },
+    { "q": "Who picks today's goal on the intake sheet?", "o": ["The volunteer", "Shelter staff", "The guest", "The organizer on duty"], "a": 2, "why": "Today's goal is the guest's choice." },
+    { "q": "A guest's chosen name differs from their legal name. Which name do you use when talking with them?", "o": ["Their legal name", "Their chosen name", "Whichever is on their ID", "Their last name only"], "a": 1, "why": "Use the chosen name; the legal name is only for DHS and DMV forms." },
+    { "q": "Which of these does NOT go on the one-page housing packet?", "o": ["HMIS ID", "Housing assessment date", "The full Social Security number", "The shelter they stay at"], "a": 2, "why": "The packet uses the last 4 only, never the full SSN." },
+    { "q": "A guest won't apply because they're afraid of a warrant. What can you tell them?", "o": ["DHS, 211, and HMIS do not check for warrants", "They should wait until the warrant clears", "You'll check for them first", "Nothing, change the subject"], "a": 0, "why": "DHS, 211, and HMIS do not check warrants." },
+    { "q": "A guest shares something heavy and asks you to keep it secret. What do you do?", "o": ["Promise to keep it secret so they keep talking", "Stay, listen, and don't promise secrecy", "End the session right away", "Tell them to talk to someone else"], "a": 1, "why": "Stay and listen, but never promise secrecy." },
+    { "q": "You ask directly and the guest says they have a plan to harm themselves. What comes next?", "o": ["Finish the paperwork first", "Get staff immediately, call the crisis line, and document the handoff", "Give them the crisis number and let them go", "Wait and see if it passes"], "a": 1, "why": "Get staff, call the crisis line, and document the handoff." },
+    { "q": "A guest is getting upset. What are the de-escalation steps?", "o": ["Raise your voice so they can hear you", "Stop, offer a choice, offer water, offer a break", "Ask them to leave", "Keep going with the forms"], "a": 1, "why": "Stop, offer a choice, water, and a break." },
+    { "q": "What is the main message of the housing script?", "o": ["Housing will come in a few weeks", "The wait is long, it isn't their fault, and let's get them into the system", "They should look for housing on their own", "There's no point applying right now"], "a": 1, "why": "Long wait, not their fault, get them in the system." },
+    { "q": "A guest needs a new DMV photo and is uneasy about how they'll look on their ID. What do you offer?", "o": ["Privacy for the DMV photo", "To take the photo yourself", "To skip the ID", "Nothing, it's a quick photo"], "a": 0, "why": "Offer privacy for the DMV photo." }
+  ]
+}
