@@ -1,11 +1,11 @@
 /* paragonpdx hub service worker — caches the app's own files only */
-var CACHE = 'ppdx-hub-v2-sunset';
+var CACHE = 'ppdx-hub-v3-training';
 var CORE = [
   './', './index.html', './styles.css', './app.js',
   './manifest.webmanifest', './logo.png',
   './icons/icon-192.png', './icons/icon-512.png',
   './data/stronger.json', './data/unbroken.json',
-  './data/vocation.json', './data/mindset.json'
+  './data/vocation.json', './data/mindset.json', './data/training.json'
 ];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(CORE); }).then(function () { return self.skipWaiting(); }));

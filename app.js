@@ -155,7 +155,7 @@ function initSB() {
 function loadSession() { session = lsGet('ppdx_hub_session_v1', null); }
 function saveSession(s) { session = s; lsSet('ppdx_hub_session_v1', s); startLive(); }
 function clearSession() {
-  session = null; stopLive();
+  session = null; stopLive(); testState = null; pendingTraining = 0;
   try { localStorage.removeItem('ppdx_hub_session_v1'); } catch (e) {}
 }
 
@@ -902,6 +902,7 @@ function refreshCounts() {
     sb.from('profiles').select('id', { count: 'exact', head: true }).eq('status', 'pending')
       .then(function (res) { pendingJoins = res.error ? 0 : (res.count || 0); refreshBell(); }).catch(function () {});
   }
+  refreshTrainingCount();
 }
 function paintMsgCount() {
   var el = $('q-msg-count');
@@ -925,7 +926,7 @@ function dailyReads() {
 }
 function refreshBell() {
   var dot = $('bell-dot'); if (!dot) return;
-  var n = session ? unreadMsgs + newPosts + dailyReads().length + (isLeader() ? pendingJoins : 0) : 0;
+  var n = session ? unreadMsgs + newPosts + dailyReads().length + (isLeader() ? pendingJoins : 0) + (isTrainApprover() ? pendingTraining : 0) : 0;
   dot.hidden = !n;
   $('bell-btn').setAttribute('aria-label', n ? 'updates, ' + n + ' new' : 'updates');
 }
@@ -934,6 +935,7 @@ routes.notifications = function () {
   var html = '<section class="greet"><div class="kicker">updates</div><h1>what’s new.</h1></section><div class="notes">';
   var any = false;
   if (isLeader() && pendingJoins) { any = true; html += '<a class="note" href="#/requests">' + icon('plus') + '<div><h2>' + pendingJoins + ' member request' + (pendingJoins > 1 ? 's' : '') + ' waiting</h2><p>approve or decline new people.</p></div></a>'; }
+  if (isTrainApprover() && pendingTraining) { any = true; html += '<a class="note" href="#/training/requests">' + icon('book') + '<div><h2>' + pendingTraining + ' training request' + (pendingTraining > 1 ? 's' : '') + ' waiting</h2><p>approve or decline volunteer training access.</p></div></a>'; }
   if (unreadMsgs) { any = true; html += '<a class="note" href="#/messages">' + icon('msg') + '<div><h2>' + unreadMsgs + ' unread message' + (unreadMsgs > 1 ? 's' : '') + '</h2><p>open your conversations.</p></div></a>'; }
   if (newPosts) { any = true; html += '<a class="note" href="#/member">' + icon('pen') + '<div><h2>' + newPosts + ' new post' + (newPosts > 1 ? 's' : '') + ' in the feed</h2><p>see what the community shared.</p></div></a>'; }
   dailyReads().forEach(function (n) {
@@ -944,6 +946,260 @@ routes.notifications = function () {
   $('view').innerHTML = html + '</div>';
 };
 
+/* ============ volunteer training (request only, one approver) ============ */
+var trainData = null, trainApprover = null, trainApproverLoaded = false, pendingTraining = 0, testState = null;
+function loadTraining(cb) {
+  if (trainData) return cb(trainData);
+  fetch('data/training.json').then(function (r) { return r.json(); })
+    .then(function (d) { trainData = d; cb(d); })
+    .catch(function () { $('view').innerHTML = '<div class="empty">couldn’t load the training — check your connection and try again.</div>'; });
+}
+function loadApprover(cb, force) {
+  if (trainApproverLoaded && !force) return cb(true);
+  sb.from('hub_settings').select('value').eq('key', 'training_approver').maybeSingle().then(function (res) {
+    if (res.error) throw res.error;
+    trainApprover = res.data ? String(res.data.value) : null;
+    trainApproverLoaded = true; cb(true);
+  }).catch(function () { cb(false); });
+}
+function isTrainApprover() {
+  return !!session && !!trainApprover && String(session.id) === trainApprover;
+}
+function trainHead(back, backLabel, kicker, title, hint) {
+  return (back ? '<a class="back-link" href="' + back + '">' + icon('back', 18) + esc(backLabel) + '</a>' : '') +
+    '<section class="greet"><div class="kicker">' + esc(kicker) + '</div><h1>' + esc(title) + '</h1>' +
+    (hint ? '<p class="hint">' + esc(hint) + '</p>' : '') + '</section>';
+}
+var TRAIN_NOT_SET = '<div class="empty">volunteer training isn’t set up yet — run the training setup step in Supabase.</div>';
+
+routes.training = function (parts) {
+  setNav('#/menu');
+  var sub = parts[0] || '';
+  $('view').innerHTML = '<div class="empty">loading…</div>';
+  loadApprover(function (ok) {
+    if (!ok) { $('view').innerHTML = TRAIN_NOT_SET; return; }
+    if (sub === 'requests') return trainRequests();
+    if (sub === 'approver') return trainHandoff();
+    sb.from('training_access').select('*').eq('profile_id', String(session.id)).maybeSingle().then(function (res) {
+      if (res.error) throw res.error;
+      var row = res.data;
+      var active = isTrainApprover() || (row && row.status === 'active');
+      if (!active) return trainGate(row);
+      loadTraining(function (d) {
+        if (sub === 'handbook') return trainHandbook(d);
+        if (sub === 'checklist') return trainChecklist(d);
+        if (sub === 'intake') return trainIntake(d);
+        if (sub === 'test') return trainTest(d, row);
+        trainHome(d, row);
+      });
+    }).catch(function () { $('view').innerHTML = TRAIN_NOT_SET; });
+  }, true);
+};
+
+function trainGate(row) {
+  var html = trainHead('#/menu', 'back to menu', 'volunteer training', 'navigator training.', '');
+  if (row && row.status === 'pending') {
+    html += '<section class="panel"><p class="lede">your request is in. you’ll get access as soon as it’s approved.</p>' +
+      '<p class="hint">check back here, or watch your updates.</p></section>';
+  } else if (row && row.status === 'declined') {
+    html += '<section class="panel"><p class="lede">your request for training access wasn’t approved.</p>' +
+      '<p class="hint">reach out to an organizer if you have questions.</p></section>';
+  } else {
+    html += '<section class="panel"><p class="lede">training for volunteers who help guests with forms, benefits, ID, and housing. access is by request.</p>' +
+      '<button class="btn" id="t-req">request access</button><p class="hint" id="t-msg" role="status"></p></section>';
+  }
+  $('view').innerHTML = html;
+  var btn = $('t-req');
+  if (btn) btn.onclick = function () {
+    btn.disabled = true; btn.textContent = 'sending…';
+    sb.from('training_access').insert({
+      profile_id: String(session.id), name: session.name, status: 'pending', requested_at: new Date().toISOString()
+    }).then(function (res) {
+      if (res.error) throw res.error;
+      toast('request sent'); route();
+    }).catch(function () {
+      btn.disabled = false; btn.textContent = 'request access';
+      $('t-msg').textContent = 'couldn’t send your request — check your connection and try again.';
+    });
+  };
+}
+
+function trainHome(d, row) {
+  var score = row && row.test_score != null ? row.test_score : null;
+  var passed = !!(row && row.test_passed_at);
+  var testLine = passed ? 'passed, ' + score + ' of ' + d.test.length :
+    (score != null ? 'last score ' + score + ' of ' + d.test.length + ', ' + d.pass + ' needed to pass' : d.test.length + ' questions, ' + d.pass + ' correct to pass');
+  var html = trainHead('#/menu', 'back to menu', 'volunteer training', 'navigator training.', d.sub);
+  if (isTrainApprover()) {
+    html += '<div class="menu" style="margin-bottom:16px">' +
+      '<a href="#/training/requests">' + icon('plus') + 'training requests' + (pendingTraining ? '<b class="badge" style="margin-left:auto">' + pendingTraining + '</b>' : '') + '</a>' +
+      '<a href="#/training/approver">' + icon('check') + 'hand off approvals</a></div>';
+  }
+  html += '<div class="notes">' +
+    '<a class="note" href="#/training/handbook">' + icon('book') + '<div><h2>volunteer handbook</h2><p>forms, contacts, crisis protocol, and scripts.</p></div></a>' +
+    '<a class="note" href="#/training/checklist">' + icon('check') + '<div><h2>interference checklist</h2><p>run it before ending any session.</p></div></a>' +
+    '<a class="note" href="#/training/intake">' + icon('file') + '<div><h2>intake sheet</h2><p>what to ask and write down with each guest.</p></div></a>' +
+    '<a class="note" href="#/training/test">' + icon('pen') + '<div><h2>training test</h2><p>' + esc(testLine) + '</p></div></a>' +
+    '</div>';
+  $('view').innerHTML = html;
+}
+
+function trainHandbook(d) {
+  var html = trainHead('#/training', 'back to training', 'volunteer handbook', 'the navigator handbook.', '');
+  d.handbook.forEach(function (s) {
+    html += '<section class="panel terms"><h3>' + esc(s.h) + '</h3>';
+    (s.body || []).forEach(function (p) { html += '<p>' + esc(p) + '</p>'; });
+    if (s.list) html += '<ul class="t-list">' + s.list.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+    if (s.steps) html += '<ol class="t-list">' + s.steps.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ol>';
+    if (s.quote) html += '<blockquote class="t-quote">' + esc(s.quote) + '</blockquote>';
+    if (s.contacts) html += '<div class="t-contacts">' + s.contacts.map(function (c) {
+      return '<div class="t-contact"><div><b>' + esc(c.name) + '</b>' + (c.note ? '<span>' + esc(c.note) + '</span>' : '') + '</div>' +
+        (c.tel ? '<a class="btn-ghost small" href="tel:' + esc(c.tel) + '">call</a>' : '') + '</div>';
+    }).join('') + '</div>';
+    html += '</section>';
+  });
+  $('view').innerHTML = html;
+}
+
+function trainChecklist(d) {
+  var html = trainHead('#/training', 'back to training', 'interference checklist', 'before you close.', d.checklist.intro);
+  html += '<section class="panel"><div class="t-checks">' + d.checklist.items.map(function (it, i) {
+    return '<label class="t-check"><input type="checkbox" id="tc' + i + '"><span><b>' + esc(it.k) + '</b>' + esc(it.v) + '</span></label>';
+  }).join('') + '</div><p class="hint">checks clear when you leave this page. nothing is saved.</p></section>';
+  $('view').innerHTML = html;
+}
+
+function trainIntake(d) {
+  var html = trainHead('#/training', 'back to training', 'intake sheet', 'the intake sheet.', d.intake.note);
+  d.intake.groups.forEach(function (g) {
+    html += '<section class="panel"><h2 class="h2">' + esc(g.h) + '</h2><div class="t-fields">' +
+      g.fields.map(function (f) { return '<div class="t-field">' + esc(f) + '</div>'; }).join('') + '</div></section>';
+  });
+  $('view').innerHTML = html;
+}
+
+function trainTest(d, row) {
+  if (!testState || testState.done) {
+    var intro = trainHead('#/training', 'back to training', 'training test', 'the training test.',
+      d.test.length + ' questions from the handbook, checklist, and intake sheet. ' + d.pass + ' correct to pass. you can retake it.');
+    $('view').innerHTML = intro + '<button class="btn" id="t-start">start the test</button>';
+    $('t-start').onclick = function () { testState = { i: 0, right: 0, done: false }; trainQuestion(d, row); };
+    return;
+  }
+  trainQuestion(d, row);
+}
+function trainQuestion(d, row) {
+  var qi = testState.i, q = d.test[qi], total = d.test.length;
+  var opts = q.o.map(function (o, i) { return '<button class="opt" data-i="' + i + '">' + esc(o) + '</button>'; }).join('');
+  $('view').innerHTML = '<section class="qscreen"><a class="back-link" href="#/training">' + icon('back', 18) + 'leave the test</a>' +
+    '<div class="kicker">question ' + (qi + 1) + ' of ' + total + '</div><h1>' + esc(q.q) + '</h1>' +
+    '<div class="opts">' + opts + '</div><div id="fb" aria-live="polite"></div></section>';
+  window.scrollTo(0, 0);
+  var btns = document.querySelectorAll('.opt'), answered = false;
+  for (var i = 0; i < btns.length; i++) btns[i].onclick = (function (idx) { return function () {
+    if (answered) return; answered = true;
+    var right = idx === q.a;
+    if (right) testState.right++;
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].disabled = true;
+      if (j === q.a) btns[j].classList.add('correct'); else if (j === idx) btns[j].classList.add('wrong');
+    }
+    var last = qi + 1 >= total;
+    $('fb').innerHTML = '<div class="feedback ' + (right ? 'good' : 'bad') + '">' + icon(right ? 'check' : 'x', 22) +
+      '<div><h2>' + (right ? 'that’s right' : 'not quite') + '</h2><p>' + esc(q.why) + '</p></div></div>' +
+      '<button class="btn" id="t-next">' + (last ? 'see my score' : 'next question') + '</button>';
+    $('t-next').onclick = function () {
+      if (last) return trainResult(d, row);
+      testState.i++; trainQuestion(d, row);
+    };
+    $('t-next').scrollIntoView({ behavior: 'smooth', block: 'end' });
+  }; })(i);
+}
+function trainResult(d, row) {
+  testState.done = true;
+  var score = testState.right, total = d.test.length, pass = score >= d.pass;
+  var already = !!(row && row.test_passed_at);
+  $('view').innerHTML = '<section class="complete"><div class="sunrise" aria-hidden="true"></div>' +
+    '<div class="kicker">training test</div><h1>' + score + ' of ' + total + '.</h1>' +
+    '<p>' + (pass ? 'you passed. thank you for showing up for our guests.' : 'you need ' + d.pass + ' to pass. look over the handbook and try again.') + '</p>' +
+    '<p class="hint" id="t-save" role="status">saving your score…</p>' +
+    (pass ? '' : '<a class="btn" href="#/training/handbook">review the handbook</a>') +
+    '<button class="btn-ghost block" id="t-again">take it again</button>' +
+    '<a class="btn-ghost block" href="#/training">back to training</a></section>';
+  $('t-again').onclick = function () { testState = { i: 0, right: 0, done: false }; trainQuestion(d, row); };
+  var upd = { test_score: score, test_taken_at: new Date().toISOString() };
+  if (pass && !already) upd.test_passed_at = upd.test_taken_at;
+  if (already && row.test_score != null && row.test_score > score) delete upd.test_score;   // keep the best passing score
+  var save = row ? sb.from('training_access').update(upd).eq('profile_id', String(session.id))
+    : sb.from('training_access').insert(Object.assign({ profile_id: String(session.id), name: session.name, status: 'active' }, upd));
+  save.then(function (res) {
+    if (res.error) throw res.error;
+    var el = $('t-save'); if (el) el.textContent = 'your score is saved.';
+  }).catch(function () { var el = $('t-save'); if (el) el.textContent = 'couldn’t save your score — check your connection.'; });
+}
+
+function trainRequests() {
+  if (!isTrainApprover()) { location.hash = '#/training'; return; }
+  $('view').innerHTML = trainHead('#/training', 'back to training', 'training requests', 'who’s asking for training.', 'only you can approve these.') +
+    '<div id="treqs" class="threads"><div class="empty">loading…</div></div>';
+  sb.from('training_access').select('*').eq('status', 'pending').order('requested_at').limit(200).then(function (res) {
+    if (res.error) throw res.error;
+    var rows = res.data || [];
+    if (!rows.length) { $('treqs').innerHTML = '<div class="empty">no training requests right now. new ones show up here and in updates.</div>'; return; }
+    $('treqs').innerHTML = rows.map(function (r) {
+      return '<div class="req" data-id="' + esc(r.profile_id) + '"><div class="avatar dim">' + esc(initials(r.name)) + '</div>' +
+        '<div class="thread-main"><div class="thread-name">' + esc(r.name) + '</div>' +
+        '<div class="thread-prev">requested ' + esc(timeAgo(r.requested_at)) + '</div>' +
+        '<div class="req-actions"><button class="btn small" data-act="active">approve</button><button class="btn-ghost small" data-act="declined">decline</button></div></div></div>';
+    }).join('');
+    var btns = $('treqs').querySelectorAll('button[data-act]');
+    for (var i = 0; i < btns.length; i++) btns[i].onclick = function () {
+      var card = this.closest('.req'), id = card.getAttribute('data-id'), act = this.getAttribute('data-act');
+      this.disabled = true;
+      sb.from('training_access').update({ status: act, decided_at: new Date().toISOString(), decided_by: session.name })
+        .eq('profile_id', id).eq('status', 'pending').then(function (u) {
+          if (u.error) throw u.error;
+          card.outerHTML = '<div class="empty">' + (act === 'active' ? 'approved — they have training access now.' : 'declined.') + '</div>';
+          refreshCounts();
+        }).catch(function () { toast('couldn’t save — check your connection'); });
+    };
+  }).catch(function () { $('treqs').innerHTML = TRAIN_NOT_SET; });
+}
+
+function trainHandoff() {
+  if (!isTrainApprover()) { location.hash = '#/training'; return; }
+  $('view').innerHTML = trainHead('#/training', 'back to training', 'hand off approvals', 'choose who approves training.',
+    'right now that’s you. once you hand it off, only the person you pick can approve training requests.') +
+    '<section class="panel"><div class="field"><label for="t-who">new approver</label><select id="t-who"><option value="">loading members…</option></select></div>' +
+    '<button class="btn" id="t-hand" disabled>hand off approvals</button><p class="hint" id="t-hmsg" role="status"></p></section>';
+  loadMembers(function (list) {
+    var sel = $('t-who'); if (!sel) return;
+    sel.innerHTML = '<option value="">pick a member</option>' + list.map(function (m) {
+      return '<option value="' + esc(m.id) + '">' + esc(m.name) + ' (' + esc(m.role) + ')</option>';
+    }).join('');
+    sel.onchange = function () { $('t-hand').disabled = !sel.value; };
+  });
+  $('t-hand').onclick = function () {
+    var sel = $('t-who'), id = sel.value, name = sel.options[sel.selectedIndex].text;
+    if (!id) return;
+    if (!confirm('hand off training approvals to ' + name + '? you won’t be able to approve requests after this.')) return;
+    $('t-hand').disabled = true;
+    sb.from('hub_settings').upsert({ key: 'training_approver', value: id }).then(function (res) {
+      if (res.error) throw res.error;
+      trainApprover = id; pendingTraining = 0; refreshBell();
+      toast('approvals handed off'); location.hash = '#/training';
+    }).catch(function () { $('t-hand').disabled = false; $('t-hmsg').textContent = 'couldn’t save — check your connection and try again.'; });
+  };
+}
+function refreshTrainingCount() {
+  if (!msgReady()) return;
+  loadApprover(function (ok) {
+    if (!ok || !isTrainApprover()) { pendingTraining = 0; refreshBell(); return; }
+    sb.from('training_access').select('profile_id', { count: 'exact', head: true }).eq('status', 'pending')
+      .then(function (res) { pendingTraining = res.error ? 0 : (res.count || 0); refreshBell(); }).catch(function () {});
+  }, true);
+}
+
 /* ============ menu ============ */
 routes.menu = function () {
   setNav('#/menu');
@@ -951,6 +1207,7 @@ routes.menu = function () {
     '<section class="greet"><div class="kicker">menu</div><h1>' + esc(session.name) + '</h1><p class="hint">' + esc((session.role || 'member').toLowerCase()) + '</p></section>' +
     '<div class="menu">' +
       (isLeader() ? '<a href="#/requests">' + icon('plus') + 'member requests' + (pendingJoins ? '<b class="badge" style="margin-left:auto">' + pendingJoins + '</b>' : '') + '</a>' : '') +
+      '<a href="#/training">' + icon('book') + 'volunteer training' + (isTrainApprover() && pendingTraining ? '<b class="badge" style="margin-left:auto">' + pendingTraining + '</b>' : '') + '</a>' +
       '<a href="' + MEET_URL + '" target="_blank" rel="noopener">' + icon('video') + 'open the meeting room</a>' +
       '<button id="m-terms">' + icon('file') + 'read the hub terms</button>' +
       '<button id="m-signout">' + icon('back') + 'sign out</button>' +

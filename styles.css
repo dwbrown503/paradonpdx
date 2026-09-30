@@ -301,3 +301,24 @@ body.reader-light .rfoot { background: #faf5ea; border-top-color: #e3d4b3; }
 .req-actions { display: flex; gap: 8px; margin-top: 12px; }
 .btn.small, .btn-ghost.small { width: auto; min-height: 44px; padding: 0 18px; font-size: 14px; }
 .hint a { color: var(--sun); }
+
+/* ---------- volunteer training ---------- */
+.field select { width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); padding: 13px 14px; font-size: 16px; color: var(--ink); font-family: var(--sans); }
+.field select:focus { outline: none; border-color: var(--sun); }
+.t-list { margin: 4px 0 4px 20px; display: flex; flex-direction: column; gap: 6px; }
+.t-quote { margin: 10px 0 2px; padding: 12px 14px; border-left: 3px solid var(--gold); background: var(--bg); border-radius: 0 var(--r-sm) var(--r-sm) 0; font-style: italic; }
+.t-contacts { display: flex; flex-direction: column; margin-top: 4px; }
+.t-contact { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
+.t-contact:first-child { border-top: none; padding-top: 4px; }
+.t-contact b { display: block; font-family: var(--sans); font-size: 15px; font-weight: 600; }
+.t-contact span { display: block; font-size: 13.5px; color: var(--mute); line-height: 1.45; margin-top: 2px; }
+.t-contact .btn-ghost.small { flex-shrink: 0; text-decoration: none; display: inline-flex; align-items: center; }
+.t-checks { display: flex; flex-direction: column; }
+.t-check { display: flex; gap: 14px; align-items: flex-start; padding: 13px 0; border-top: 1px solid var(--line); cursor: pointer; }
+.t-check:first-child { border-top: none; padding-top: 2px; }
+.t-check input { width: 22px; height: 22px; margin-top: 1px; accent-color: var(--sun); flex-shrink: 0; }
+.t-check span { font-family: var(--serif); font-size: 15.5px; line-height: 1.5; }
+.t-check b { display: block; font-family: var(--sans); font-size: 13px; font-weight: 700; color: var(--sun); margin-bottom: 2px; }
+.t-check input:checked + span { color: var(--mute); }
+.t-fields { display: flex; flex-direction: column; gap: 14px; }
+.t-field { font-size: 14px; color: var(--mute); padding-bottom: 18px; border-bottom: 1px dashed var(--line); }
